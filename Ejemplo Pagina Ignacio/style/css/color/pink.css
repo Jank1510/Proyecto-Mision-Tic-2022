@@ -1,0 +1,31 @@
+a {
+    color: #dc7c9d;
+}
+.post-title a:hover,
+.more:hover,
+.meta a:hover {
+    color: #dc7c9d;
+}
+a.line:hover {
+    border-bottom: 1px solid #dc7c9d;
+}
+a:hover,
+a:focus {
+    color: #dc7c9d;
+    text-decoration: none;
+}
+.inverse-wrapper a:hover {
+    color: #dc7c9d;
+}
+.post-nav-wrapper a:hover {
+    color: #dc7c9d;
+}
+#comments .info h5 a:hover {
+    color: #dc7c9d;
+}
+.sidebox a:hover {
+    color: #dc7c9d
+}
+.widget .post-list li a:hover {
+    color: #dc7c9d
+}

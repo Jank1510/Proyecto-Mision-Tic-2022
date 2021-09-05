@@ -1,0 +1,31 @@
+a {
+    color: #b8ce74;
+}
+.post-title a:hover,
+.more:hover,
+.meta a:hover {
+    color: #b8ce74;
+}
+a.line:hover {
+    border-bottom: 1px solid #b8ce74;
+}
+a:hover,
+a:focus {
+    color: #b8ce74;
+    text-decoration: none;
+}
+.inverse-wrapper a:hover {
+    color: #b8ce74;
+}
+.post-nav-wrapper a:hover {
+    color: #b8ce74;
+}
+#comments .info h5 a:hover {
+    color: #b8ce74;
+}
+.sidebox a:hover {
+    color: #b8ce74
+}
+.widget .post-list li a:hover {
+    color: #b8ce74
+}

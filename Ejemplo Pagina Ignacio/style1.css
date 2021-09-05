@@ -1,0 +1,79 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?vccrmv');
+  src:  url('fonts/icomoon.eot?vccrmv#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?vccrmv') format('truetype'),
+    url('fonts/icomoon.woff?vccrmv') format('woff'),
+    url('fonts/icomoon.svg?vccrmv#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-banknote:before {
+  content: "\e901";
+}
+.icon-check:before {
+  content: "\e901";
+}
+.icon-bill:before {
+  content: "\e901";
+}
+.icon-money:before {
+  content: "\e901";
+}
+.icon-cash:before {
+  content: "\e901";
+}
+.icon-notebook:before {
+  content: "\e902";
+}
+.icon-developer_mode:before {
+  content: "\e905";
+}
+.icon-computer:before {
+  content: "\e904";
+}
+.icon-hq:before {
+  content: "\e900";
+}
+.icon-office:before {
+  content: "\e903";
+}
+.icon-display:before {
+  content: "\e956";
+}
+.icon-user-tie:before {
+  content: "\e976";
+}
+.icon-stats-dots:before {
+  content: "\e99b";
+}
+.icon-leaf:before {
+  content: "\e9a4";
+}
+.icon-earth:before {
+  content: "\e9ca";
+}
+.icon-checkmark:before {
+  content: "\ea10";
+}
+
+
+
+

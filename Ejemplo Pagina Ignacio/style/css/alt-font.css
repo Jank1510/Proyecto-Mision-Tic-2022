@@ -1,0 +1,88 @@
+/*-----------------------------------------------------------------------------------*/
+/*	FONT
+/*-----------------------------------------------------------------------------------*/
+body,
+.map-info p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.nav-tabs > li > a,
+.panel-group .panel-heading .panel-title {
+    font-family: 'Dosis', sans-serif;
+    font-weight: normal;
+}
+strong,
+.upper,
+.widget-title,
+.label,
+.dropcap,
+.navbar .navbar-nav > li > a,
+.navbar .dropdown-menu li a,
+.btn,
+.overlay:not(.icon-overlay) a .over,
+.cbp-filter-item,
+a.cbp-caption p,
+.cbp-popup-singlePage .cbp-popup-prev:before,
+.cbp-popup-singlePage .cbp-popup-next:before,
+.cbp-popup-singlePage .cbp-popup-close:before {
+    font-family: 'Dosis', sans-serif;
+    font-weight: bold;
+}
+/*-----------------------------------------------------------------------------------*/
+/*	SIZES
+/*-----------------------------------------------------------------------------------*/
+body {
+    font-size: 17px;
+}
+body,
+li,
+address,
+textarea {
+    line-height: 25px
+}
+h4.upper {
+    font-size: 14px;
+    line-height: 21px;
+}
+.lead {
+    font-size: 22px;
+    line-height: 32px;
+}
+blockquote small,
+.meta,
+.more,
+.panel-desc {
+    font-size: 12.5px;
+    line-height: 21px;
+    font-weight: 500;
+}
+.navbar .navbar-nav > li > a {
+    font-size: 13px;
+}
+.navbar .dropdown-menu li a {
+    font-size: 12px;
+}
+.widget-title {
+    font-size: 13px;
+    line-height: 21px;
+}
+a.cbp-caption p {
+    font-size: 14px;
+}
+.overlay:not(.icon-overlay) a .over {
+    font-size: 14px;
+}
+.lg-sub-html p {
+    font-size: 17px;
+}
+/*-----------------------------------------------------------------------------------*/
+/*	RESPONSIVE
+/*-----------------------------------------------------------------------------------*/
+@media (min-width: 992px) {
+    .navbar .navbar-nav > li > a {
+        padding-top: 14px;
+    }
+}
