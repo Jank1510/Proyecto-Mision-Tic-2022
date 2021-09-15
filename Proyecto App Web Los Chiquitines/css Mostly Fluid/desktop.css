@@ -1,0 +1,12 @@
+@media (min-width: 1000px){
+    .text {
+        width: 800px;
+        margin: 100px 750px;
+        margin-left: 50px;
+        margin-right: 750px;
+    }
+    #menu #logo {
+        padding-right: 400px;
+    }
+    
+}
