@@ -51,5 +51,18 @@ header{
     color:rgb(152, 173, 231);
     border-radius: 10px;
 }
-/*Diseño de la estructura main de mision*/
+/*Diseño de la estructura main o contenido xd*/
+#menu header main {
+    margin-top: 5%;
+}
+#menu header main .divmain{
+    float: left;
+}
+#menu header main #text{
+    width: 50%;
+    margin-left: 20px;
 
+}
+#menu header main #img {
+    margin-left: 10%;
+}
