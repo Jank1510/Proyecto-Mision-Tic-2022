@@ -23,7 +23,7 @@ header{
 }
 #menu #logo {
     float: left;
-    margin: 5px 10px;
+    margin: -15px 30px;
 }
 #menu #item a {
     text-decoration: none;
@@ -38,7 +38,7 @@ header{
 }
 #menu #desple {
     display: none;
-    background-color: rgba(46, 78, 219, 0.623);
+    background-color: rgb(46, 78, 219);
     height: auto;
     width: auto;
     position: absolute;
@@ -47,7 +47,7 @@ header{
     display: block;
 }
 #menu #item a:hover {
-    background-color: rgb(46, 78, 219);
+    background-color: rgb(81, 107, 224);
     color:rgb(152, 173, 231);
     border-radius: 10px;
 }
@@ -59,10 +59,18 @@ header{
     float: left;
 }
 #menu header main #text{
-    width: 50%;
-    margin-left: 20px;
+    width: 30%;
+    margin-left: 60px;
 
 }
 #menu header main #img {
     margin-left: 10%;
+}
+#bandera {
+    box-shadow: 0 0 15px 0 rgb(53, 7, 80) ;
+    border-radius: 20px;
+    
+}
+#menu header div li {
+    list-style: none;
 }
