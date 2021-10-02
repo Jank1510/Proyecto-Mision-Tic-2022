@@ -1,6 +1,28 @@
-@media (min-width: 1000px){
+@media (min-width: 690px){
     
-    #menu #logo {
-        padding-right: 400px;
+    #menu #menuDesktop {
+        display: block;
+    }
+    
+    #menu header main #img {
+        display: block;
+    }   
+    #menu header main #text{
+        width: 50%;
+        margin-left: 5%;
+        margin-top: 2%;
+    
+    }
+    #menu header main #texthimno{
+        width: 100;
+        margin-top: 100px;
+    }
+    #menu #logo{
+        margin: -15px ;
+        margin-left: 2%;
+        float: left ;
+    }
+    #menu #itemPhone{
+        display: none;
     }
 }

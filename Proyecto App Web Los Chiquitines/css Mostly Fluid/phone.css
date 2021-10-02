@@ -1,6 +1,23 @@
-@media (min-width: 600px){
+@media (min-width: 0px){
     
-    #menu #logo {
-        padding-right: 30px;
+    #menu #menuDesktop{
+        display: none;
+
+    }
+    #menu header main #img {
+        display: none;
+    }   
+    #menu header main #text{
+        width: 80%;
+        margin-left: 5%;
+    
+    }
+    #menu #logo{
+        margin: -15px ;
+        margin-left: 2%;
+        float: right;
+    }
+    #menu #itemPhone{
+        display: block;
     }
 }

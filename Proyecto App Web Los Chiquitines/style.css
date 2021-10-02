@@ -10,67 +10,145 @@ header{
     height: 100vh;
     color:white;
 }
-#menu ul{    
+/*diseño del menu de escritorio*/
+#menu #menuDesktop{    
     list-style: none;
     margin: 0;
     padding: 0;
     height: 42px;
     width: auto;    
     border-radius: 10px;
+    float: right;
 }
-#menu #item {
+#menu #itemDesktop {
     float: left;
+    margin-right: 15px;
 }
 #menu #logo {
-    float: left;
-    margin: -15px 30px;
+    list-style: none;    
 }
-#menu #item a {
+#menu #itemDesktop a {
     text-decoration: none;
     color:white;
     padding: 12px 22px;
     display: block;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 20px;
+    margin-top: 15px;
+    
 }
-#menu #item ul {
-    color: brown;
-}
+
 #menu #desple {
     display: none;
     background-color: rgb(46, 78, 219);
     height: auto;
     width: auto;
     position: absolute;
+    list-style: none;
+    border-radius: 10px;
 }
-#menu #item:hover #desple {
+#menu #itemDesktop:hover #desple {
     display: block;
 }
-#menu #item a:hover {
+#menu #itemDesktop a:hover {
     background-color: rgb(81, 107, 224);
     color:rgb(152, 173, 231);
     border-radius: 10px;
 }
+#menu header main {
+    text-align: center;
+}
+#menu #historia {
+    margin-top: 90px;
+}
+/*Diseño del menu en telefonos*/
+
+#menu #itemPhone {
+    float: left;
+    display: none;
+}
+#menu #itemPhone a {
+    text-decoration: none;
+    color:white;
+    padding: 12px 22px;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin-top: 15px;    
+}
+#menu #desplePhone {
+    display: none;
+    background-color: rgb(46, 78, 219);
+    height: auto;
+    width: 180px;
+    position: absolute;
+    list-style: none;
+    border-radius: 10px;
+    float: left;
+}
+
+#menu #itemPhone:hover #desplePhone{
+    display: block;
+}
+#menu #itemPhone a:hover {
+    background-color: rgb(81, 107, 224);
+    color:rgb(152, 173, 231);
+    border-radius: 10px;
+}
+/*desple del phone*/
+#menu #itemPhoneDesple{
+    float: left;
+}
+#menu #despleDelPhone{
+    margin-left: 100%;
+    display: block;
+
+}
+
+
 /*Diseño de la estructura main o contenido xd*/
 #menu header main {
+    float: left;
+    list-style: none;
+}
+#menu header #mainprincipal{
+    margin-left: 12%;
     margin-top: 5%;
 }
 #menu header main .divmain{
     float: left;
 }
-#menu header main #text{
-    width: 30%;
-    margin-left: 60px;
 
-}
 #menu header main #img {
     margin-left: 10%;
 }
 #bandera {
     box-shadow: 0 0 15px 0 rgb(53, 7, 80) ;
     border-radius: 20px;
-    
+    margin-top: 5%;
+    margin-left: 10%;
 }
 #menu header div li {
     list-style: none;
+}
+#menu header main form{
+    text-align: center;
+}
+.textos {
+    border-radius: 10px;
+}
+#menu header main form p{
+    width: 34%;
+    margin-left: 33%;
+    text-align: justify;
+}
+#menu header main form #politica {
+    margin-left: -200px;
+}
+#menu header main form button{
+    background-color: rgb(4, 0, 255);
+    border-radius: 15px;
+    color: white;
+    padding: 10px 20px;
+    border-style: hidden;
 }
