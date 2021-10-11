@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,25 +10,24 @@
     <link rel="stylesheet" href="./css Mostly Fluid/phone.css">
     <link rel="stylesheet" href="./css Mostly Fluid/desktop.css">
 </head>
-
 <body>
     <div id="menu">
-        <header>
+        <header> 
             <li id="logo"><img src="./img/logo.png" width="150"></li>
-            <li id="itemPhone"><img src="./img/Menu.png" width="70">
+            <li id="itemPhoneMain"><a id="diseñodeldesplegable" href="#itemPhoneMain"><img src="./img/Menu.png" width="60"></a>
                 <ul id="desplePhone">
                     <li id="itemPhone"><a href="#">Inicio</a> </li>
-                    <li id="itemPhoneDesple"><a id="esdesple" href="#">Quienes Somos ▽</a></li>
+                    <li id="itemPhoneDesple"><a id="esdesple" href="#itemPhoneDesple">Quienes Somos ▽</a>
+                        <ul id="despleDelPhone">
+                            <li><a id="jehan" href="./Quienes Somos/mision.html">✔ Mision</a></li>
+                            <li><a id="jehan" href="./Quienes Somos/vision.html">✔ Vision</a></li>
+                            <li><a id="jehan" href="./Quienes Somos/objetivos.html">✔ Objetivos</a></li>
+                            <li><a id="jehan" href="./Quienes Somos/historia.html">✔ Nuestra Historia</a></li>
+                            <li><a id="jehan" href="./Quienes Somos/himno.html">✔ Himno y bandera</a></li>        
+                        </ul>
+                    </li>
                     <li id="itemPhone"><a href="./contactenos.html">Contactenos</a> </li>
-                    <li id="itemPhone"><a href="#">Docentes</a></li>
-                </ul>
-                <ul id="despleDelPhone">
-                    <li><a id="jehan" href="./Quienes Somos/mision.html">Mision</a></li>
-                    <li><a id="jehan" href="./Quienes Somos/vision.html">Vision</a></li>
-                    <li><a id="jehan" href="./Quienes Somos/objetivos.html">Objetivos</a></li>
-                    <li><a id="jehan" href="./Quienes Somos/historia.html">Nuestra Historia</a></li>
-                    <li><a id="jehan" href="./Quienes Somos/himno.html">Himno y bandera</a></li>
-
+                    <li id="itemPhone"><a href="#">Docentes</a></li></ul>
                 </ul>
             </li>
             <ul id="menuDesktop">
@@ -41,16 +39,15 @@
                         <li><a id="jehan" href="./Quienes Somos/objetivos.html">Objetivos</a></li>
                         <li><a id="jehan" href="./Quienes Somos/historia.html">Nuestra Historia</a></li>
                         <li><a id="jehan" href="./Quienes Somos/himno.html">Himno y bandera</a></li>
-
                     </ul>
                 </li>
                 <li id="itemDesktop"><a href="./contactenos.html">Contáctenos</a> </li>
                 <li id="itemDesktop"><a href="#">Docentes</a></li>
             </ul>
-            <main id="mainprincipal">
+            <div id="mainprincipal">
                 <h1> ¡Bienvenidos Instituto Chiquitines¡</h1>
-                <li ><img src="./img/Actividad.jpeg" width="570"></li>
-            </main>
+                <li id="imgindex"><img src="./img/Actividad.jpeg" width="570"></li>
+            </div> 
 
         </header>
 

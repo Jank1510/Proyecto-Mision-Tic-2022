@@ -55,79 +55,87 @@ header{
     color:rgb(152, 173, 231);
     border-radius: 10px;
 }
-#menu header main {
-    text-align: center;
-}
-#menu #historia {
-    margin-top: 90px;
-}
 /*Diseño del menu en telefonos*/
-
-#menu #itemPhone {
-    float: left;
-    display: none;
+#menu #itemPhoneMain {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 10px;
+    list-style: none;
 }
-#menu #itemPhone a {
+#menu #itemPhoneMain a {
     text-decoration: none;
     color:white;
-    padding: 12px 22px;
+    padding: 5px 30px;
     display: block;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
-    margin-top: 15px;    
+    padding-top: 10px;  
+    margin-top: -5px;
+    margin-left: -5px;    
+}
+#menu #itemPhoneMain #diseñodeldesplegable {/*diseño del desplegable del phone para q no se deforme*/
+    padding: 0px 0px;
+    padding-top: 0px;
 }
 #menu #desplePhone {
     display: none;
     background-color: rgb(46, 78, 219);
-    height: auto;
-    width: 180px;
     position: absolute;
     list-style: none;
     border-radius: 10px;
-    float: left;
+    margin-top: -5px;
+    text-align: left;  
+    width: 195px;  
 }
+/*desple del phone*/
+#menu #despleDelPhone{
+    border-radius: 15px;
+    list-style: none;
+    text-align: left;
+    width: 195px; 
+}/******************/
 
-#menu #itemPhone:hover #desplePhone{
-    display: block;
+#menu #itemPhoneMain:hover #desplePhone,
+#menu #itemPhoneMain:target ul#desplePhone {
+    display: block;    
 }
-#menu #itemPhone a:hover {
+#menu:target #desplephone{
+    display: none;
+}
+#menu #itemPhoneMain a:hover,
+#menu #itemPhoneMain a:target {
     background-color: rgb(81, 107, 224);
     color:rgb(152, 173, 231);
     border-radius: 10px;
 }
-/*desple del phone*/
-#menu #itemPhoneDesple{
-    float: left;
-}
-#menu #despleDelPhone{
-    margin-left: 100%;
-    display: block;
 
-}
-
+    /*********/
 
 /*Diseño de la estructura main o contenido xd*/
 #menu header main {
     float: left;
     list-style: none;
+    text-align: center;
+    width: 100%;
 }
+/****************/
+/*diseño del div del index*/
 #menu header #mainprincipal{
-    margin-left: 12%;
-    margin-top: 5%;
+    text-align: center;
 }
-#menu header main .divmain{
-    float: left;
+#menu header #mainprincipal #imgindex img{    
+    min-height:200px;
+    min-width:200px;
+    height:auto;
+    width:auto;
+    max-height:55%;
+    max-width:55%;      
+}
+/********************/
+#menu header main #img {
+    margin-left: 15%;
 }
 
-#menu header main #img {
-    margin-left: 10%;
-}
-#bandera {
-    box-shadow: 0 0 15px 0 rgb(53, 7, 80) ;
-    border-radius: 20px;
-    margin-top: 5%;
-    margin-left: 10%;
-}
 #menu header div li {
     list-style: none;
 }
@@ -137,18 +145,19 @@ header{
 .textos {
     border-radius: 10px;
 }
-#menu header main form p{
-    width: 34%;
-    margin-left: 33%;
-    text-align: justify;
-}
-#menu header main form #politica {
-    margin-left: -200px;
-}
+
 #menu header main form button{
     background-color: rgb(4, 0, 255);
     border-radius: 15px;
     color: white;
     padding: 10px 20px;
     border-style: hidden;
+}
+#diseñobandera {/*imagen de la bandera de la pagina de himno*/      
+    box-shadow: 0 0 15px 0 rgb(53, 7, 80) ;
+    border-radius: 20px;       
+}
+#imghistoria{
+    margin-right: 5%;
+    margin-top: 6%;
 }
