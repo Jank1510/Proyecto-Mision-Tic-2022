@@ -2,7 +2,6 @@
   #menu #menuDesktop {
     display: block;
   }
-
   #menu header main #img {
     display: block;
   }
@@ -13,7 +12,6 @@
     margin-top: 2%;
   }
   #menu header main {
-    margin-left: 3%;
     width: 100%;
     float: left;
   }
@@ -79,4 +77,21 @@
     text-align: justify;
   }
   /*************************/
+   #laterales2{
+    display: block;
+    width: 20%;
+    padding-top: 40px;
+    padding-left: 8%;
+    text-align: left;
+  }
+  #laterales1{
+    display: block;
+    width: 20%;
+    padding-top: 65px;
+    padding-left: 8%;
+    text-align: left;
+  }
+  #central{
+    width:40% ;
+  }
 }

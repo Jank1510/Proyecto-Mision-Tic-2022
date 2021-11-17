@@ -68,4 +68,18 @@
     text-align: justify;
   }
   /*************************/
+  #laterales1{
+    display: none;
+  }
+  #laterales2{
+    display: none;
+  }
+  #central{
+    width:100% ;
+  }
+}
+@media (max-height:730px) {/*Correccion de el parrafo de contactenos que se combinaba con el footer en pantallas poco altas*/
+  #parrafocontactenos{
+    display: none;
+  }
 }
