@@ -1,0 +1,194 @@
+/*Diseño princiopal*/
+*{
+    padding: 0;
+    margin: 0;
+}
+header{    
+    background-image: url(./img/bradcam.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 100vh;
+    color:white;
+}
+/*diseño del menu de escritorio*/
+#menu #menuDesktop{    
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 42px;
+    width: auto;    
+    border-radius: 10px;
+    float: right;
+}
+#menu #itemDesktop {
+    float: left;
+    margin-right: 15px;
+}
+#menu #logo {
+    list-style: none;    
+}
+#menu #itemDesktop a {
+    text-decoration: none;
+    color:white;
+    padding: 12px 22px;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-top: 15px;
+    
+}
+
+#menu #desple {
+    display: none;
+    background-color: rgb(46, 78, 219);
+    height: auto;
+    width: auto;
+    position: absolute;
+    list-style: none;
+    border-radius: 10px;
+}
+#menu #itemDesktop:hover #desple {
+    display: block;
+    z-index: 1;
+}
+#menu #itemDesktop a:hover {
+    background-color: rgb(81, 107, 224);
+    color:rgb(152, 173, 231);
+    border-radius: 10px;
+}
+/*Diseño del menu en telefonos*/
+#menu #itemPhoneMain {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 10px;
+    list-style: none;
+}
+#menu #itemPhoneMain a {
+    text-decoration: none;
+    color:white;
+    padding: 5px 30px;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    padding-top: 10px;  
+    margin-top: -5px;
+    margin-left: -5px;    
+}
+#menu #itemPhoneMain #diseñodeldesplegable {/*diseño del desplegable del phone para q no se deforme*/
+    padding: 0px 0px;
+    padding-top: 0px;
+}
+#menu #desplePhone {
+    display: none;
+    background-color: rgb(46, 78, 219);
+    position: absolute;
+    list-style: none;
+    border-radius: 10px;
+    margin-top: -5px;
+    text-align: left;  
+    width: 195px;  
+}
+/*desple del phone*/
+#menu #despleDelPhone{
+    border-radius: 15px;
+    list-style: none;
+    text-align: left;
+    width: 195px;
+}/******************/
+
+#menu #itemPhoneMain:hover #desplePhone,
+#menu #itemPhoneMain:target ul#desplePhone {
+    display: block;   
+    z-index: 1;
+}
+#menu:target #desplephone{
+    display: none;
+}
+#menu #itemPhoneMain a:hover,
+#menu #itemPhoneMain a:target {
+    background-color: rgb(81, 107, 224);
+    color:rgb(152, 173, 231);
+    border-radius: 10px;
+}
+
+    /*********/
+
+/*Diseño de la estructura main o contenido xd*/
+#menu header main {
+    float: left;
+    list-style: none;
+    text-align: center;
+    width: 100%;
+}
+/****************/
+/*diseño del div del index*/
+#menu header #mainprincipal{
+    text-align: center;
+}
+#menu header #mainprincipal #imgindex img{    
+    min-height:200px;
+    min-width:200px;
+    height:auto;
+    width:auto;
+    max-height:55%;
+    max-width:55%;      
+}
+/********************/
+#menu header main #img {
+    margin-left: 15%;
+}
+
+#menu header div li {
+    list-style: none;
+}
+#menu header main form{
+    text-align: center;
+}
+.textos {
+    border-radius: 10px;
+}
+
+#menu header main form button{
+    background-color: rgb(4, 0, 255);
+    border-radius: 15px;
+    color: white;
+    padding: 10px 20px;
+    border-style: hidden;
+}
+#diseñobandera {/*imagen de la bandera de la pagina de himno*/      
+    box-shadow: 0 0 15px 0 rgb(53, 7, 80) ;
+    border-radius: 20px;       
+}
+#imghistoria{
+    margin-right: 5%;
+    margin-top: 6%;
+}
+/*footer*/
+#footer {
+    width: 100%;
+    height: 215px;
+    background-image: url(./img/footer-.png); 
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-top: 40px;
+    padding-left: 1%;
+    align-content: center;
+}
+.footer{
+    
+    float:left;
+    padding-top: 35px;
+    text-align: center;
+    color: white;
+}
+.redesfooter{
+    width:20%;
+    float:left;
+    text-align: center;
+    color: white;
+}
+#copyright{
+    padding-top: 65px;
+    margin-top: 25px;
+}
+/*************/
