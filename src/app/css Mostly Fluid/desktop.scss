@@ -1,0 +1,17 @@
+@media (min-width: 796px) {
+    #menu #menuDesktop {
+      display: block;
+    }
+    /*logo*/
+    #menu #logo {
+      margin: -15px;
+      margin-left: 2%;
+      float:none;
+    }
+    #menu #logo img {
+      width: 150px;
+    }
+    #menu #itemPhoneMain {
+      display: none;
+    }
+  }

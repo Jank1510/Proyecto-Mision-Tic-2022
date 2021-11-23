@@ -1,0 +1,21 @@
+@media (min-width: 0px) {
+    #menu #menuDesktop {
+      display: none;
+    }
+  
+    /*logo*/
+    #menu #logo {
+      margin: -15px; 
+      margin-left: 2%;
+      float: right;
+    }
+    #menu #logo img {
+      width: 100px;
+    }
+    #menu #itemPhoneMain {
+      display: block;
+    }
+    
+    
+  }
+  

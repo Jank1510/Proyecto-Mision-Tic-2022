@@ -1,0 +1,17 @@
+#mainprincipal{
+    margin-top: 8%;
+    text-align: center;
+}
+//mostly fluid
+//phone
+@media (min-width: 0px) {
+    #imgindex img{
+        width: 70%;
+    }
+}
+//desktop
+@media (min-width: 796px) {
+    #imgindex img{
+        width: 570px;
+    }
+}

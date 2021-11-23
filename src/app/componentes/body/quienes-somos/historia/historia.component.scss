@@ -1,0 +1,44 @@
+#divMain{
+    display: inline-block;
+    margin-top: 10%;
+    margin-left: 5%;
+    
+}
+/****************mostly fluid****************/
+//phone
+@media (min-width: 0px) {
+    #text{
+        width:90%;
+        margin-right: 10%;
+    }
+    #imghistoria{
+        display: none;
+    }
+    #text p{
+        text-align: justify;
+    }
+    #divMain{
+        text-align: center;
+    }
+}
+//desktop
+@media (min-width: 796px) {
+    .divmain{
+        float:left;
+    }
+    #text{
+        width:50%;
+        margin-right: 10%;
+    }
+    #imghistoria{
+        display: block;
+        margin-left: 10%;
+        margin-top: 0;
+    }
+    #text p{
+        text-align: left;
+    }
+    #divMain{
+        text-align: left;
+    }
+}

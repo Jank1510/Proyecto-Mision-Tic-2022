@@ -1,0 +1,39 @@
+#divMain{
+    display: inline-block;
+    margin-top: 12%;
+    margin-left: 10%;
+    text-align: center;
+}
+
+/****************mostly fluid****************/
+//phone
+@media (min-width: 0px) {
+    #text{
+        width:90%;
+        margin-right: 10%;
+    }
+    #img{
+        margin-left: -10%;
+        margin-top: 50px;
+    }
+    #text p{
+        text-align: justify;
+    }
+}
+//desktop
+@media (min-width: 796px) {
+    .divmain{
+        float:left;
+    }
+    #text{
+        width:50%;
+        margin-right: 10%;
+    }
+    #img{
+        margin-left: 10%;
+        margin-top: 0;
+    }
+    #text p{
+        text-align: left;
+    }
+}

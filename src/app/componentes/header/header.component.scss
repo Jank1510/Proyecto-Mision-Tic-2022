@@ -1,0 +1,133 @@
+/* You can add global styles to this file, and also import other style files */
+/*Diseño princiopal*/
+#menu{
+    height: 100%;
+width: 100%;
+position: absolute;
+}
+header{
+    display: inline-block;
+width: 100%;
+}
+#clickafuera{//este div es creado para ocultar el menu desplegable dando click afuera de el
+
+width: 100%;
+height: 100%;
+margin-top: -50px;
+}
+/*diseño del menu de escritorio*/
+#menu #menuDesktop{    
+    list-style: none;
+    float: right;
+    padding: 0;
+    height: 42px;
+    width: auto;    
+    border-radius: 10px;
+}
+#menu #itemDesktop { 
+    float: left;
+    margin-right: 2px;
+}
+#menu #logo {
+    list-style: none;
+    display: inline-block;
+}
+#menu #itemDesktop a {
+    text-decoration: none;
+    color:white;
+    padding: 12px 22px;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-top: 15px;
+}
+#menu #desple {
+    background-color: rgb(46, 78, 219);
+    height: auto;
+    width: auto;
+    position: absolute;
+    list-style: none;
+    border-radius: 10px;
+}
+#menu #itemDesktop a:hover {
+    background-color: rgb(81, 107, 224);
+    color:rgb(152, 173, 231);
+    border-radius: 10px;
+}
+/*Diseño del menu en telefonos*/
+#menu #itemPhoneMain {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 10px;
+    list-style: none;
+}
+#menu #itemPhoneMain a {
+    text-decoration: none;
+    color:white;
+    padding: 5px 30px;
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    padding-top: 10px;  
+    margin-top: -5px;
+    margin-left: -5px;    
+}
+#menu #itemPhoneMain #diseñodeldesplegable {/*diseño del desplegable del phone para q no se deforme*/
+    padding: 0px 0px;
+    padding-top: 0px;
+}
+#menu #desplePhone {
+    background-color: rgb(46, 78, 219);
+    position: absolute;
+    list-style: none;
+    border-radius: 10px;
+    margin-top: -5px;
+    text-align: left;  
+    width: 195px;  
+}
+/*desple del phone*/
+#menu #despleDelPhone{
+    border-radius: 15px;
+    list-style: none;
+    text-align: left;
+    width: 195px;
+}/******************/
+
+
+#menu #itemPhoneMain a:target {
+    background-color: rgb(81, 107, 224);
+    color:rgb(152, 173, 231);
+    border-radius: 10px;
+}
+
+    /*********/
+
+/*
+
+#footer {
+    width: 100%;
+    height: 215px;
+    background-image: url(../assets/img/footer-.png); 
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin-top: 40px;
+    padding-left: 1%;
+    align-content: center;
+}
+.footer{
+    
+    float:left;
+    padding-top: 35px;
+    text-align: center;
+    color: white;
+}
+.redesfooter{
+    width:20%;
+    float:left;
+    text-align: center;
+    color: white;
+}
+#copyright{
+    padding-top: 65px;
+    margin-top: 25px;
+}*/

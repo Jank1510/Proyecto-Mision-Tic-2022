@@ -1,0 +1,46 @@
+#divMain{
+    display: inline-block;
+    margin-top: 15%;
+    text-align: center;
+    width: 100%;
+}
+.divmainhimno{
+    display: inline-block;   
+}
+#diseñobandera{
+    margin-top: 20px;
+    border-radius: 50px;
+}
+
+/****************mostly fluid****************/
+//phone
+@media (min-width: 0px) {
+    #texthimno{
+        width:90%;
+    }
+    #diseñobandera{
+        margin-top: 50px;
+        width:300px;
+    }
+    #text p{
+        text-align: justify;
+    }
+}
+//desktop
+@media (min-width: 796px) {
+    
+    #bandera{
+        margin-left: 30px;
+    }
+    #texthimno{
+        width:50%;
+        display: inline-block;
+        margin-left: -7%;
+        margin-right: 0%;
+
+    }
+    #diseñobandera{
+        width:400px;
+        margin-top: 0;
+    }
+}
