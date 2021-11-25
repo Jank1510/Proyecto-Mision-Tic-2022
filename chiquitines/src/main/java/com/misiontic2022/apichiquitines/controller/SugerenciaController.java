@@ -15,6 +15,7 @@ import com.misiontic2022.apichiquitines.service.SugerenciaService;
 @RestController
 @RequestMapping("/sugerencias")
 public class SugerenciaController {
+	
 	@Autowired
 	private SugerenciaService sugerenciaService;
 
