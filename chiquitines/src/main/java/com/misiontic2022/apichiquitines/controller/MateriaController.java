@@ -10,29 +10,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.misiontic2022.apichiquitines.model.Curso;
-import com.misiontic2022.apichiquitines.service.CursoService;
+import com.misiontic2022.apichiquitines.model.Materia;
+import com.misiontic2022.apichiquitines.service.MateriaService;
 
 @RestController
-@RequestMapping("/cursos")
-public class CursoController {
+@RequestMapping("/materias")
+public class MateriaController {
 
 	@Autowired
-	private CursoService cursoService;
+	private MateriaService materiaService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Curso> getCursos() {
-		return this.cursoService.getCursos();
+	public List<Materia> getMaterias() {
+		return this.materiaService.getMaterias();
 	}
 
 	@RequestMapping(method = RequestMethod.POST, path = "/add")
-	public Curso addCurso(@RequestBody Curso curso) {
-		return this.cursoService.addCurso(curso);
+	public Materia addMateria(@RequestBody Materia materia) {
+		return this.materiaService.addMateria(materia);
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> deleteCurso(@PathVariable("id") Integer id) {
-		this.cursoService.deleteCurso(id);
+	public ResponseEntity<Void> deleteMateria(@PathVariable("id") Integer id) {
+		this.materiaService.deleteMateria(id);
 		return ResponseEntity.ok(null);
 	}
 }

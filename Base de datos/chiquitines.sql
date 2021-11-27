@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `chiquitines`.`contactenos` (
   `mensaje` VARCHAR(300) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `chiquitines`.`cursos` (
   `descripcion` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 9
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `chiquitines`.`materias` (
   `nombre` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 6
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `chiquitines`.`roles` (
   `descripcion` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 3
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `chiquitines`.`usuarios` (
     FOREIGN KEY (`roles_id`)
     REFERENCES `chiquitines`.`roles` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 

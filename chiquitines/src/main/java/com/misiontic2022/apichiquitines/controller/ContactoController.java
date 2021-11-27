@@ -20,9 +20,8 @@ public class ContactoController {
 	private ContactoService contactoService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Contacto> getSugerencia() {
+	public List<Contacto> getContactos() {
 		return this.contactoService.getContactos();
-		// return productoRespository.findAll();
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
@@ -34,8 +33,8 @@ public class ContactoController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public Contacto addSugerencia(@RequestBody Contacto sugerencia) {
-		return this.contactoService.addContacto(sugerencia);
+	public Contacto addContacto(@RequestBody Contacto contacto) {
+		return this.contactoService.addContacto(contacto);
 	}
 
 
