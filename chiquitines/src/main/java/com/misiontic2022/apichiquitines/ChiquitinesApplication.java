@@ -5,11 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 import com.misiontic2022.apichiquitines.util.NoticiaUtil;
-import com.misiontic2022.apichiquitines.util.RecursoUtil;
+import com.misiontic2022.apichiquitines.util.FileStorageProperties;
 
 @SpringBootApplication
 @EnableConfigurationProperties({
-    RecursoUtil.class,
+    FileStorageProperties.class,
     NoticiaUtil.class
 })
 public class ChiquitinesApplication {

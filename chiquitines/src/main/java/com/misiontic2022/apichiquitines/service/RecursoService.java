@@ -1,24 +1,33 @@
 package com.misiontic2022.apichiquitines.service;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
 
 import com.misiontic2022.apichiquitines.repository.RecursoRepository;
 import com.misiontic2022.apichiquitines.util.FileStorageException;
-import com.misiontic2022.apichiquitines.util.RecursoUtil;
+import com.misiontic2022.apichiquitines.util.FileStorageProperties;
+import com.misiontic2022.apichiquitines.util.MyFileNotFoundException;
 
+
+//Completar servicio
 @Service
 public class RecursoService {
 	private final Path fileStorageLocation;
 	private RecursoRepository recursoRepository;
 
     @Autowired
-    public RecursoService(RecursoUtil recursoUtil) {
+    public RecursoService(FileStorageProperties recursoUtil) {
         this.fileStorageLocation = Paths.get(recursoUtil.getUploadDir())
                 .toAbsolutePath().normalize();
 

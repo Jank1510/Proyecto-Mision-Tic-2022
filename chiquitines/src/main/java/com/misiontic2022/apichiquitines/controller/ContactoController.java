@@ -9,33 +9,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.misiontic2022.apichiquitines.model.Sugerencia;
-import com.misiontic2022.apichiquitines.service.SugerenciaService;
+import com.misiontic2022.apichiquitines.model.Contacto;
+import com.misiontic2022.apichiquitines.service.ContactoService;
 
 @RestController
 @RequestMapping("/sugerencias")
-public class SugerenciaController {
+public class ContactoController {
 	
 	@Autowired
-	private SugerenciaService sugerenciaService;
+	private ContactoService contactoService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Sugerencia> getSugerencia() {
-		return this.sugerenciaService.getSugerencias();
+	public List<Contacto> getSugerencia() {
+		return this.contactoService.getContactos();
 		// return productoRespository.findAll();
 	}
 
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
-	public Sugerencia getSugerencia(@PathVariable Integer id) {
+	public Contacto getContacto(@PathVariable Integer id) {
 
-		Sugerencia sugerencia = this.sugerenciaService.getSugerencia(id);
+		Contacto contacto = this.contactoService.getContacto(id);
 
-		return sugerencia;
+		return contacto;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public Sugerencia addSugerencia(@RequestBody Sugerencia sugerencia) {
-		return this.sugerenciaService.addSugerencia(sugerencia);
+	public Contacto addSugerencia(@RequestBody Contacto sugerencia) {
+		return this.contactoService.addContacto(sugerencia);
 	}
 
 

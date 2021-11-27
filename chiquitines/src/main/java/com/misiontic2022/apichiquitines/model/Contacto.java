@@ -8,20 +8,20 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "contactenos")
-public class Sugerencia {
+public class Contacto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;	
 	private String nombresApellidos;
 	private String correo;
 	private String mensaje;
-	public Sugerencia(String nombresApellidos, String correo, String mensaje) {
+	public Contacto(String nombresApellidos, String correo, String mensaje) {
 		super();
 		this.nombresApellidos = nombresApellidos;
 		this.correo = correo;
 		this.mensaje = mensaje;
 	}
-	public Sugerencia() {
+	public Contacto() {
 		super();
 	}
 	public Integer getId() {

@@ -112,6 +112,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `chiquitines`.`recursos` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NULL,
+  `tipo_archivo` VARCHAR(45) NULL,
+  `tamaño` LONGBLOB NULL,
   `ruta` VARCHAR(400) NOT NULL,
   `materias_id` INT NOT NULL,
   `cursos_id` INT NOT NULL,
@@ -160,7 +163,6 @@ VALUES
 INSERT INTO usuarios(nick_name, contraseña, nombres, apellidos, roles_id)
 VALUES  
 ('admin','admin','Administrador', 'Chiquitines', 1);
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
