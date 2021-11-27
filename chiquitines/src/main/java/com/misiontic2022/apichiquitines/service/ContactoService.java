@@ -21,16 +21,16 @@ public class ContactoService {
 	}
 
 	public Contacto getContacto(Integer id) {
-		Optional<Contacto> sugerencia = this.contactoRepository.findById(id);
-		if (sugerencia.isPresent()) {
-			return sugerencia.get();
+		Optional<Contacto> contacto = this.contactoRepository.findById(id);
+		if (contacto.isPresent()) {
+			return contacto.get();
 		} else {
 			return new Contacto();
 		}
 	}
 
-	public Contacto addContacto(Contacto sugerencia) {
-		return this.contactoRepository.save(sugerencia);
+	public Contacto addContacto(Contacto contacto) {
+		return this.contactoRepository.save(contacto);
 	}
 
 	public void deleteContacto(Integer id) {

@@ -23,7 +23,7 @@ public class RecursoController {
 	@Autowired
 	private RecursoService recursoService;
 
-	@PostMapping("/subirArchivo")
+	@PostMapping("/subir_archivo")
 	public RecursoUtil uploadFile(@RequestParam("file") MultipartFile file) {
 		
 		String fileName = recursoService.storeFile(file);
