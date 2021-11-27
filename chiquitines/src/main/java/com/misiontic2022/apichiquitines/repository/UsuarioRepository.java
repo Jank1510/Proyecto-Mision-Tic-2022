@@ -7,5 +7,7 @@ import com.misiontic2022.apichiquitines.model.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+	
+	Usuario getByNickNameAndContraseña(String nickName, String contraseña);
 
 }
