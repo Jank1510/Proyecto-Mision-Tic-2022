@@ -1,2 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.misiontic2022.apichiquitines.service.CursoService"/>
+    <fullyQualifiedTypeName name="com.misiontic2022.apichiquitines.model.Curso"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
+    <fullyQualifiedTypeName name="com.misiontic2022.apichiquitines.repository.MateriaRepository"/>
+    <fullyQualifiedTypeName name="com.misiontic2022.apichiquitines.service.MateriaService"/>
+    <fullyQualifiedTypeName name="com.misiontic2022.apichiquitines.model.Materia"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.misiontic2022.apichiquitines.repository.RolRepository"/>
+    <fullyQualifiedTypeName name="com.misiontic2022.apichiquitines.service.RolService"/>
+    <fullyQualifiedTypeName name="com.misiontic2022.apichiquitines.model.Rol"/>
+</qualifiedTypeNameHistroy>
