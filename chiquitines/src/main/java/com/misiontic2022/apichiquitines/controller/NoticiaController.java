@@ -1,44 +1,31 @@
 package com.misiontic2022.apichiquitines.controller;
 
-import org.slf4j.LoggerFactory;
-
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.google.gson.Gson;
-import com.misiontic2022.apichiquitines.model.Curso;
-import com.misiontic2022.apichiquitines.model.Materia;
-import com.misiontic2022.apichiquitines.model.Recurso;
-import com.misiontic2022.apichiquitines.model.Usuario;
-import com.misiontic2022.apichiquitines.service.CursoService;
-import com.misiontic2022.apichiquitines.service.MateriaService;
-import com.misiontic2022.apichiquitines.service.RecursoService;
-import com.misiontic2022.apichiquitines.service.UsuarioService;
-import com.misiontic2022.apichiquitines.util.RecursoUtil;
+import com.misiontic2022.apichiquitines.service.NoticiaService;
+
+import java.io.File;
+import java.io.IOException;
 
 @RestController
-@RequestMapping("/recursos")
-public class RecursoController {
-
+@RequestMapping(value = "/noticias")
+public class NoticiaController {
+	
 	private static final Logger logger = LoggerFactory.getLogger(RecursoController.class);
-
+	
+	
+	@Autowired
+	private NoticiaService noticiaService;
+	
 	@Autowired
 	private RecursoService recursoService;
 	@Autowired
@@ -47,6 +34,24 @@ public class RecursoController {
 	private CursoService cursoService;
 	@Autowired
 	private UsuarioService usuarioService;
+
+	// Devuelve las imagenes al navegador
+	private String FILE_PATH_ROOT = "C:/ChiquitinesResources/Noticias/";
+
+	@GetMapping("/{filename}")
+	public ResponseEntity<byte[]> getImage(@PathVariable("filename") String filename) {
+		byte[] image = new byte[0];
+		try {
+			image = FileUtils.readFileToByteArray(new File(FILE_PATH_ROOT + filename));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(image);
+	}
+
+	
+
+	
 
 	@RequestMapping(value = "/subir_recurso", method = RequestMethod.POST)
 	public Recurso subirRecurso(@RequestParam("archivo") MultipartFile file,
@@ -57,16 +62,15 @@ public class RecursoController {
 		Usuario usuario = usuarioService.getUsuario(ru.getUsuario().getId());
 		Curso curso = cursoService.getCurso(ru.getUsuario().getId());
 		usuario.setContraseña("");
-		
+
 		List<Recurso> recursos = recursoService.getRecursos();
-		String numeroRecurso = String.valueOf(recursos.get(recursos.size()-1).getId());		
-		
-		
+		String numeroRecurso = String.valueOf(recursos.get(recursos.size() - 1).getId());
+
 		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-				.path("recursos/descargar_recurso/").path(numeroRecurso+fileName).toUriString();
-		Recurso recurso = new Recurso(numeroRecurso + fileName, file.getContentType(), file.getSize(), fileDownloadUri, materia, curso,
-				usuario);
-		recursoService.guardarRecurso(file, recurso,numeroRecurso + fileName);
+				.path("recursos/descargar_recurso/").path(numeroRecurso + fileName).toUriString();
+		Recurso recurso = new Recurso(numeroRecurso + fileName, file.getContentType(), file.getSize(), fileDownloadUri,
+				materia, curso, usuario);
+		recursoService.guardarRecurso(file, recurso, numeroRecurso + fileName);
 		return recurso;
 	}
 
@@ -101,7 +105,8 @@ public class RecursoController {
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> deleteRecurso(@PathVariable("id") Integer id) throws IOException {
 
-		Files.deleteIfExists(Paths.get("C:/ChiquitinesResources/ArchivosProfesores/" + recursoService.getRecurso(id).getNombre()));
+		Files.deleteIfExists(
+				Paths.get("C:/ChiquitinesResources/ArchivosProfesores/" + recursoService.getRecurso(id).getNombre()));
 		this.recursoService.deleteRecurso(id);
 		return ResponseEntity.ok(null);
 	}
@@ -111,5 +116,4 @@ public class RecursoController {
 		Recurso recurso = this.recursoService.getRecurso(id);
 		return recurso;
 	}
-
 }

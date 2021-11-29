@@ -5,20 +5,16 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 
 @ConfigurationProperties(prefix = "file")
-public class FileStorageProperties {
+public class RecursosFileStorageProperties {
 	
 
 	private String uploadDir;
 
 	public String getUploadDir() {
-		return uploadDir;
+		return uploadDir+"/"+"ArchivosProfesores";
 	}
 
 	public void setUploadDir(String uploadDir) {
 		this.uploadDir = uploadDir;
-	}
-
-
-
-	
+	}	
 }

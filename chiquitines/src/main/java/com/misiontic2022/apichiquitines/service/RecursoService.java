@@ -20,7 +20,7 @@ import com.misiontic2022.apichiquitines.model.Materia;
 import com.misiontic2022.apichiquitines.model.Recurso;
 import com.misiontic2022.apichiquitines.repository.RecursoRepository;
 import com.misiontic2022.apichiquitines.util.FileStorageException;
-import com.misiontic2022.apichiquitines.util.FileStorageProperties;
+import com.misiontic2022.apichiquitines.util.RecursosFileStorageProperties;
 import com.misiontic2022.apichiquitines.util.MyFileNotFoundException;
 
 //Completar servicio
@@ -31,7 +31,7 @@ public class RecursoService {
 	private RecursoRepository recursoRepository;
 
 	@Autowired
-	public RecursoService(FileStorageProperties storageProperties) {
+	public RecursoService(RecursosFileStorageProperties storageProperties) {
 		this.fileStorageLocation = Paths.get(storageProperties.getUploadDir()).toAbsolutePath().normalize();
 
 		try {
@@ -44,20 +44,22 @@ public class RecursoService {
 
 	public List<Recurso> getRecursos() {
 		List<Recurso> recursos = recursoRepository.findAll();
+		 
 		for (Recurso r : recursos) {
 			r.getUsuario().setContraseña("");
 		}
 		return recursos;
 	}
+	
 
 	public String obtenerNombre(MultipartFile file) {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		return fileName;
 	}
 
-	public void guardarRecurso(MultipartFile file, Recurso recurso) {
+	public void guardarRecurso(MultipartFile file, Recurso recurso, String name) {
 		// Normalize file name
-		String fileName = obtenerNombre(file);
+		String fileName = name;
 
 		try {
 			// Check if the file's name contains invalid characters
@@ -67,6 +69,7 @@ public class RecursoService {
 
 			// Copy file to the target location (Replacing existing file with the same name)
 			Path targetLocation = this.fileStorageLocation.resolve(fileName);
+			System.out.println(targetLocation);
 			Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
 			// Se guardan las caracteristicas del recurso en la BD
 			recursoRepository.save(recurso);
