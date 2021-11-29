@@ -2,7 +2,10 @@ package com.misiontic2022.apichiquitines.controller;
 
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,8 +41,6 @@ public class RecursoController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RecursoController.class);
 
-
-
 	@Autowired
 	private RecursoService recursoService;
 	@Autowired
@@ -50,15 +51,16 @@ public class RecursoController {
 	private UsuarioService usuarioService;
 
 	@RequestMapping(value = "/subir_recurso", method = RequestMethod.POST)
-	public Recurso subirRecurso(@RequestParam("archivo") MultipartFile file, @RequestParam("recurso") String recursoUtil) {
+	public Recurso subirRecurso(@RequestParam("archivo") MultipartFile file,
+			@RequestParam("recurso") String recursoUtil) {
 		RecursoUtil ru = new Gson().fromJson(recursoUtil, RecursoUtil.class);
 		String fileName = recursoService.obtenerNombre(file);
 		Materia materia = materiaService.getMateria(ru.getMateria().getId());
 		Usuario usuario = usuarioService.getUsuario(ru.getUsuario().getId());
 		usuario.setContraseña("");
 		Curso curso = cursoService.getCurso(ru.getUsuario().getId());
-		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("recursos/descargar_recurso/")
-				.path(fileName).toUriString();
+		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+				.path("recursos/descargar_recurso/").path(fileName).toUriString();
 		Recurso recurso = new Recurso(fileName, file.getContentType(), file.getSize(), fileDownloadUri, materia, curso,
 				usuario);
 		recursoService.guardarRecurso(file, recurso);
@@ -83,13 +85,31 @@ public class RecursoController {
 			contentType = "application/octet-stream";
 		}
 		return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
-				.header(org.springframework.http.HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+				.header(org.springframework.http.HttpHeaders.CONTENT_DISPOSITION,
+						"attachment; filename=\"" + resource.getFilename() + "\"")
 				.body(resource);
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Recurso> getRecursos() {
 		return recursoService.getRecursos();
+	}
+
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> deleteRecurso(@PathVariable("id") Integer id) throws IOException {
+
+		Files.deleteIfExists(Paths.get("C:/ChiquitinesResources/" + recursoService.getRecurso(id).getNombre()));
+		this.recursoService.deleteRecurso(id);
+
+		return ResponseEntity.ok(null);
+	}
+
+	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	public Recurso getRecurso(@PathVariable Integer id) {
+
+		Recurso recurso = this.recursoService.getRecurso(id);
+
+		return recurso;
 	}
 
 }

@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -72,6 +73,19 @@ public class RecursoService {
 
 		} catch (IOException ex) {
 			throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);
+		}
+	}
+
+	public void deleteRecurso(Integer id) {
+		this.recursoRepository.deleteById(id);
+	}
+
+	public Recurso getRecurso(Integer id) {
+		Optional<Recurso> recurso = this.recursoRepository.findById(id);
+		if (recurso.isPresent()) {
+			return recurso.get();
+		} else {
+			return null;
 		}
 	}
 
