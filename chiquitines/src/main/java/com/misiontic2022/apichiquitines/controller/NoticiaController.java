@@ -9,31 +9,30 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.google.gson.Gson;
+import com.misiontic2022.apichiquitines.model.Noticia;
 import com.misiontic2022.apichiquitines.service.NoticiaService;
+import com.misiontic2022.apichiquitines.util.NoticiaUtil;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.sql.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/noticias")
 public class NoticiaController {
-	
-	private static final Logger logger = LoggerFactory.getLogger(RecursoController.class);
-	
-	
+
 	@Autowired
 	private NoticiaService noticiaService;
-	
-	@Autowired
-	private RecursoService recursoService;
-	@Autowired
-	private MateriaService materiaService;
-	@Autowired
-	private CursoService cursoService;
-	@Autowired
-	private UsuarioService usuarioService;
 
 	// Devuelve las imagenes al navegador
 	private String FILE_PATH_ROOT = "C:/ChiquitinesResources/Noticias/";
@@ -49,71 +48,48 @@ public class NoticiaController {
 		return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(image);
 	}
 
-	
-
-	
-
-	@RequestMapping(value = "/subir_recurso", method = RequestMethod.POST)
-	public Recurso subirRecurso(@RequestParam("archivo") MultipartFile file,
-			@RequestParam("recurso") String recursoUtil) {
-		RecursoUtil ru = new Gson().fromJson(recursoUtil, RecursoUtil.class);
-		String fileName = recursoService.obtenerNombre(file);
-		Materia materia = materiaService.getMateria(ru.getMateria().getId());
-		Usuario usuario = usuarioService.getUsuario(ru.getUsuario().getId());
-		Curso curso = cursoService.getCurso(ru.getUsuario().getId());
-		usuario.setContraseña("");
-
-		List<Recurso> recursos = recursoService.getRecursos();
-		String numeroRecurso = String.valueOf(recursos.get(recursos.size() - 1).getId());
-
-		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-				.path("recursos/descargar_recurso/").path(numeroRecurso + fileName).toUriString();
-		Recurso recurso = new Recurso(numeroRecurso + fileName, file.getContentType(), file.getSize(), fileDownloadUri,
-				materia, curso, usuario);
-		recursoService.guardarRecurso(file, recurso, numeroRecurso + fileName);
-		return recurso;
-	}
-
-	@RequestMapping(value = "/descargar_recurso/{fileName:.+}", method = RequestMethod.GET)
-	public ResponseEntity<Resource> descargarRecurso(@PathVariable String fileName, HttpServletRequest request) {
-		// Load file as Resource
-		Resource resource = recursoService.loadFileAsResource(fileName);
-
-		// Try to determine file's content type
-		String contentType = null;
-		try {
-			contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
-		} catch (IOException ex) {
-			logger.info("Could not determine file type.");
+	@RequestMapping(value = "/subir_noticia", method = RequestMethod.POST)
+	public Noticia subirNoticia(@RequestParam("imagen") MultipartFile file,
+			@RequestParam("noticia") String noticiaUtil) {
+		NoticiaUtil n = new Gson().fromJson(noticiaUtil, NoticiaUtil.class);
+		String titulo = n.getTituloNoticia();
+		String fileName = noticiaService.obtenerNombre(file);
+		List<Noticia> noticias = noticiaService.getNoticias();
+		String numeroNoticia;
+		if (noticias.size() == 0) {
+			numeroNoticia = "1";
+		} else {
+			numeroNoticia = String.valueOf(noticias.get(noticias.size() - 1).getId() + 1);
 		}
+		
 
-		// Fallback to the default content type if type could not be determined
-		if (contentType == null) {
-			contentType = "application/octet-stream";
-		}
-		return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
-				.header(org.springframework.http.HttpHeaders.CONTENT_DISPOSITION,
-						"attachment; filename=\"" + resource.getFilename() + "\"")
-				.body(resource);
+		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("noticias/")
+				.path(numeroNoticia + fileName).toUriString();
+		Noticia noticia = new Noticia(titulo, numeroNoticia + fileName,
+				new Date(System.currentTimeMillis()), fileDownloadUri, n.getDescripcion());
+	
+		
+		noticiaService.guardarNoticia(file, noticia, numeroNoticia + fileName);
+		return noticia;
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Recurso> getRecursos() {
-		return recursoService.getRecursos();
+	public List<Noticia> getNoticias() {
+		return noticiaService.getNoticias();
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> deleteRecurso(@PathVariable("id") Integer id) throws IOException {
+	public ResponseEntity<Void> deleteNoticia(@PathVariable("id") Integer id) throws IOException {
 
 		Files.deleteIfExists(
-				Paths.get("C:/ChiquitinesResources/ArchivosProfesores/" + recursoService.getRecurso(id).getNombre()));
-		this.recursoService.deleteRecurso(id);
+				Paths.get("C:/ChiquitinesResources/Noticias/" + noticiaService.getNoticia(id).getNombreImagen()));
+		this.noticiaService.deleteNoticia(id);
 		return ResponseEntity.ok(null);
 	}
 
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
-	public Recurso getRecurso(@PathVariable Integer id) {
-		Recurso recurso = this.recursoService.getRecurso(id);
-		return recurso;
+	@RequestMapping(value = "{obtener/id}", method = RequestMethod.GET)
+	public Noticia getNoticia(@PathVariable Integer id) {
+		Noticia noticia = this.noticiaService.getNoticia(id);
+		return noticia;
 	}
 }

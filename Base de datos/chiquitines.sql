@@ -63,7 +63,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `chiquitines`.`noticias` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `fecha` DATETIME NOT NULL,
+  `titulo_noticia` VARCHAR(100) NOT NULL,
+  `nombre_imagen` VARCHAR(100) NULL,
+  `fecha` DATE NOT NULL,
   `ruta` VARCHAR(400) NOT NULL,
   `descripcion` VARCHAR(300) NOT NULL,
   PRIMARY KEY (`id`))
@@ -112,7 +114,8 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `chiquitines`.`recursos` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(45) NULL,
+  `nombre_recurso` VARCHAR(45) NOT NULL,
+  `nombre_archivo` VARCHAR(45) NULL,
   `tipo_archivo` VARCHAR(45) NULL,
   `tamaño` LONGBLOB NULL,
   `ruta` VARCHAR(400) NOT NULL,

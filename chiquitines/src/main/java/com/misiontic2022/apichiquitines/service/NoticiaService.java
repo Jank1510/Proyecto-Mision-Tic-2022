@@ -40,7 +40,7 @@ public class NoticiaService {
 		}
 	}
 
-	public List<Noticia> getRecursos() {
+	public List<Noticia> getNoticias() {
 		List<Noticia> noticias = noticiaRepository.findAll();
 		return noticias;
 	}

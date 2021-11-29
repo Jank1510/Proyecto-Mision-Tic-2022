@@ -17,7 +17,11 @@ public class Recurso {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	private String nombre;
+	@JoinColumn(name = "nombre_recurso")
+	private String nombreRecurso;
+	
+	@JoinColumn(name = "nombre_archivo")
+	private String nombreArchivo;
 	
 	@Column(name = "tipo_archivo")
 	private String tipoArchivo;
@@ -37,12 +41,11 @@ public class Recurso {
 	@JoinColumn(name = "usuarios_id")
 	private Usuario usuario;
 
-	
-
-	public Recurso(String nombre, String tipoArchivo, Long tamaño, String ruta, Materia materia, Curso curso,
-			Usuario usuario) {
+	public Recurso(String nombreRecurso, String nombreArchivo, String tipoArchivo, Long tamaño, String ruta,
+			Materia materia, Curso curso, Usuario usuario) {
 		super();
-		this.nombre = nombre;
+		this.nombreRecurso = nombreRecurso;
+		this.nombreArchivo = nombreArchivo;
 		this.tipoArchivo = tipoArchivo;
 		this.tamaño = tamaño;
 		this.ruta = ruta;
@@ -50,110 +53,86 @@ public class Recurso {
 		this.curso = curso;
 		this.usuario = usuario;
 	}
-	
-	
 
 	public Recurso() {
 		super();
 	}
 
-
-
 	public Integer getId() {
 		return id;
 	}
-
-
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-
-
-	public String getNombre() {
-		return nombre;
+	public String getNombreRecurso() {
+		return nombreRecurso;
 	}
 
-
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setNombreRecurso(String nombreRecurso) {
+		this.nombreRecurso = nombreRecurso;
 	}
 
+	public String getNombreArchivo() {
+		return nombreArchivo;
+	}
 
+	public void setNombreArchivo(String nombreArchivo) {
+		this.nombreArchivo = nombreArchivo;
+	}
 
 	public String getTipoArchivo() {
 		return tipoArchivo;
 	}
 
-
-
 	public void setTipoArchivo(String tipoArchivo) {
 		this.tipoArchivo = tipoArchivo;
 	}
-
-
 
 	public Long getTamaño() {
 		return tamaño;
 	}
 
-
-
 	public void setTamaño(Long tamaño) {
 		this.tamaño = tamaño;
 	}
-
-
 
 	public String getRuta() {
 		return ruta;
 	}
 
-
-
 	public void setRuta(String ruta) {
 		this.ruta = ruta;
 	}
-
-
 
 	public Materia getMateria() {
 		return materia;
 	}
 
-
-
 	public void setMateria(Materia materia) {
 		this.materia = materia;
 	}
-
-
 
 	public Curso getCurso() {
 		return curso;
 	}
 
-
-
 	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
-
-
 
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
-
-
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 
+	
 
+	
 
 
 	
