@@ -6,49 +6,47 @@ import com.misiontic2022.apichiquitines.model.Materia;
 import com.misiontic2022.apichiquitines.model.Usuario;
 
 public class RecursoUtil {
-	 private String fileName;
-	    private String fileDownloadUri;
-	    private String fileType;
-	    private long size;
-
-	    public RecursoUtil(String fileName, String fileDownloadUri, String fileType, long size) {
-	        this.fileName = fileName;
-	        this.fileDownloadUri = fileDownloadUri;
-	        this.fileType = fileType;
-	        this.size = size;
-	    }
-
-		public String getFileName() {
-			return fileName;
+	    private Materia materia;
+	    private Curso curso;
+	    private Usuario usuario;
+	    
+		public RecursoUtil(Materia materia, Curso curso, Usuario usuario) {
+			super();
+			this.materia = materia;
+			this.curso = curso;
+			this.usuario = usuario;
 		}
 
-		public void setFileName(String fileName) {
-			this.fileName = fileName;
+		public RecursoUtil() {
+			super();
 		}
 
-		public String getFileDownloadUri() {
-			return fileDownloadUri;
+		public Materia getMateria() {
+			return materia;
 		}
 
-		public void setFileDownloadUri(String fileDownloadUri) {
-			this.fileDownloadUri = fileDownloadUri;
+		public void setMateria(Materia materia) {
+			this.materia = materia;
 		}
 
-		public String getFileType() {
-			return fileType;
+		public Curso getCurso() {
+			return curso;
 		}
 
-		public void setFileType(String fileType) {
-			this.fileType = fileType;
+		public void setCurso(Curso curso) {
+			this.curso = curso;
 		}
 
-		public long getSize() {
-			return size;
+		public Usuario getUsuario() {
+			return usuario;
 		}
 
-		public void setSize(long size) {
-			this.size = size;
+		public void setUsuario(Usuario usuario) {
+			this.usuario = usuario;
 		}
+
+		
+	   
 	    
 	    
 }

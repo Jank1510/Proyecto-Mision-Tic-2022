@@ -25,7 +25,7 @@ public class ContactoService {
 		if (contacto.isPresent()) {
 			return contacto.get();
 		} else {
-			return new Contacto();
+			return null;
 		}
 	}
 

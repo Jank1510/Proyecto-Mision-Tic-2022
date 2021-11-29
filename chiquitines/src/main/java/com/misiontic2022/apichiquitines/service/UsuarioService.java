@@ -1,8 +1,11 @@
 package com.misiontic2022.apichiquitines.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.misiontic2022.apichiquitines.model.Materia;
 import com.misiontic2022.apichiquitines.model.Usuario;
 import com.misiontic2022.apichiquitines.repository.UsuarioRepository;
 
@@ -15,7 +18,15 @@ public class UsuarioService {
 	
 	public Usuario agregarUsuario(Usuario usuario) {
 		return usuarioRepository.save(usuario);
-		
+	}
+	
+	public Usuario getUsuario(Integer id) {
+		Optional<Usuario> usuario = this.usuarioRepository.findById(id);
+		if (usuario.isPresent()) {
+			return usuario.get();
+		} else {
+			return null;
+		}
 	}
 
 	public Usuario login(Usuario usuario) {
@@ -25,6 +36,7 @@ public class UsuarioService {
 			usuario.setRol(u.getRol());
 			usuario.setNombres(u.getNombres());
 			usuario.setApellidos(u.getApellidos());
+			usuario.setContraseña("");
 		}
 
 		return usuario;

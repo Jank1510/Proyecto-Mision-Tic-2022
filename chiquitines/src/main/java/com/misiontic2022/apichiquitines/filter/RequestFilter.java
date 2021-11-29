@@ -20,7 +20,7 @@ import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureException;
 import io.jsonwebtoken.impl.crypto.MacProvider;
 
-@Component
+//@Component
 public class RequestFilter implements Filter{
 
 	public static final Key KEY = MacProvider.generateKey();

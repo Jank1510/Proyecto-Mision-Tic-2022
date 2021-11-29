@@ -19,6 +19,7 @@ public class CursoController {
 
 	@Autowired
 	private CursoService cursoService;
+	
 
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Curso> getCursos() {
@@ -35,4 +36,6 @@ public class CursoController {
 		this.cursoService.deleteCurso(id);
 		return ResponseEntity.ok(null);
 	}
+	
+	
 }

@@ -1,6 +1,7 @@
 package com.misiontic2022.apichiquitines.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,6 @@ public class MateriaService {
 	MateriaRepository materiaRepository;
 
 	public List<Materia> getMaterias() {
-
 		return materiaRepository.findAll();
 	}
 
@@ -24,5 +24,14 @@ public class MateriaService {
 
 	public void deleteMateria(Integer id) {
 		this.materiaRepository.deleteById(id);
+	}
+	
+	public Materia getMateria(Integer id) {
+		Optional<Materia> materia = this.materiaRepository.findById(id);
+		if (materia.isPresent()) {
+			return materia.get();
+		} else {
+			return null;
+		}
 	}
 }

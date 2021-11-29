@@ -10,7 +10,7 @@ import com.misiontic2022.apichiquitines.util.FileStorageProperties;
 
 @SpringBootApplication
 @CrossOrigin("*")
-@EnableConfigurationProperties({ FileStorageProperties.class, NoticiaUtil.class })
+@EnableConfigurationProperties({ FileStorageProperties.class})
 public class ChiquitinesApplication {
 
 	public static void main(String[] args) {

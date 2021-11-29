@@ -22,7 +22,7 @@ public class Recurso {
 	@Column(name = "tipo_archivo")
 	private String tipoArchivo;
 	
-	private String tamaño;
+	private Long tamaño;
 	private String ruta;
 	
 	@ManyToOne
@@ -39,7 +39,7 @@ public class Recurso {
 
 	
 
-	public Recurso(String nombre, String tipoArchivo, String tamaño, String ruta, Materia materia, Curso curso,
+	public Recurso(String nombre, String tipoArchivo, Long tamaño, String ruta, Materia materia, Curso curso,
 			Usuario usuario) {
 		super();
 		this.nombre = nombre;
@@ -95,13 +95,13 @@ public class Recurso {
 
 
 
-	public String getTamaño() {
+	public Long getTamaño() {
 		return tamaño;
 	}
 
 
 
-	public void setTamaño(String tamaño) {
+	public void setTamaño(Long tamaño) {
 		this.tamaño = tamaño;
 	}
 
