@@ -5,7 +5,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.misiontic2022.apichiquitines.model.Materia;
 import com.misiontic2022.apichiquitines.model.Usuario;
 import com.misiontic2022.apichiquitines.repository.UsuarioRepository;
 

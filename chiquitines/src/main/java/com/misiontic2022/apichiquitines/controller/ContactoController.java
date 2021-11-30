@@ -24,7 +24,7 @@ public class ContactoController {
 		return this.contactoService.getContactos();
 	}
 
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
 	public Contacto getContacto(@PathVariable Integer id) {
 
 		Contacto contacto = this.contactoService.getContacto(id);
@@ -32,7 +32,7 @@ public class ContactoController {
 		return contacto;
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/add",method = RequestMethod.POST)
 	public Contacto addContacto(@RequestBody Contacto contacto) {
 		return this.contactoService.addContacto(contacto);
 	}

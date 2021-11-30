@@ -16,7 +16,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 
-import com.misiontic2022.apichiquitines.model.Materia;
 import com.misiontic2022.apichiquitines.model.Recurso;
 import com.misiontic2022.apichiquitines.repository.RecursoRepository;
 import com.misiontic2022.apichiquitines.util.FileStorageException;

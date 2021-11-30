@@ -58,22 +58,20 @@ public class RecursoController {
 		Usuario usuario = usuarioService.getUsuario(ru.getUsuario().getId());
 		Curso curso = cursoService.getCurso(ru.getUsuario().getId());
 		usuario.setContraseña("");
-		
+
 		List<Recurso> recursos = recursoService.getRecursos();
 		String numeroRecurso;
-		if (recursos.size()==0) {
+		if (recursos.size() == 0) {
 			numeroRecurso = "1";
-		}else {
-			numeroRecurso = String.valueOf(recursos.get(recursos.size()-1).getId()+1);
+		} else {
+			numeroRecurso = String.valueOf(recursos.get(recursos.size() - 1).getId() + 1);
 		}
-				
-		
-		
+
 		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-				.path("recursos/descargar_recurso/").path(numeroRecurso+fileName).toUriString();
-		Recurso recurso = new Recurso(nombreRecurso ,numeroRecurso + fileName, file.getContentType(), file.getSize(), fileDownloadUri, materia, curso,
-				usuario);
-		recursoService.guardarRecurso(file, recurso,numeroRecurso + fileName);
+				.path("recursos/descargar_recurso/").path(numeroRecurso + fileName).toUriString();
+		Recurso recurso = new Recurso(nombreRecurso, numeroRecurso + fileName, file.getContentType(), file.getSize(),
+				fileDownloadUri, materia, curso, usuario);
+		recursoService.guardarRecurso(file, recurso, numeroRecurso + fileName);
 		return recurso;
 	}
 
@@ -100,7 +98,7 @@ public class RecursoController {
 				.body(resource);
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	public List<Recurso> getRecursos() {
 		return recursoService.getRecursos();
 	}
@@ -108,12 +106,13 @@ public class RecursoController {
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> deleteRecurso(@PathVariable("id") Integer id) throws IOException {
 
-		Files.deleteIfExists(Paths.get("C:/ChiquitinesResources/ArchivosProfesores/" + recursoService.getRecurso(id).getNombreArchivo()));
+		Files.deleteIfExists(Paths
+				.get("C:/ChiquitinesResources/ArchivosProfesores/" + recursoService.getRecurso(id).getNombreArchivo()));
 		this.recursoService.deleteRecurso(id);
 		return ResponseEntity.ok(null);
 	}
 
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/obtener/{id}", method = RequestMethod.GET)
 	public Recurso getRecurso(@PathVariable Integer id) {
 		Recurso recurso = this.recursoService.getRecurso(id);
 		return recurso;

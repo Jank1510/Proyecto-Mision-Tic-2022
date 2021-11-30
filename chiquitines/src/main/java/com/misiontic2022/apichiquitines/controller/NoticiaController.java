@@ -1,8 +1,6 @@
 package com.misiontic2022.apichiquitines.controller;
 
 import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +35,7 @@ public class NoticiaController {
 	// Devuelve las imagenes al navegador
 	private String FILE_PATH_ROOT = "C:/ChiquitinesResources/Noticias/";
 
-	@GetMapping("/{filename}")
+	@GetMapping("getImg/{filename}")
 	public ResponseEntity<byte[]> getImage(@PathVariable("filename") String filename) {
 		byte[] image = new byte[0];
 		try {
@@ -63,7 +61,7 @@ public class NoticiaController {
 		}
 		
 
-		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("noticias/")
+		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("noticias/getImg/")
 				.path(numeroNoticia + fileName).toUriString();
 		Noticia noticia = new Noticia(titulo, numeroNoticia + fileName,
 				new Date(System.currentTimeMillis()), fileDownloadUri, n.getDescripcion());
@@ -73,21 +71,21 @@ public class NoticiaController {
 		return noticia;
 	}
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/getAll",method = RequestMethod.GET)
 	public List<Noticia> getNoticias() {
 		return noticiaService.getNoticias();
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> deleteNoticia(@PathVariable("id") Integer id) throws IOException {
+	public ResponseEntity<String> deleteNoticia(@PathVariable("id") Integer id) throws IOException {
 
 		Files.deleteIfExists(
 				Paths.get("C:/ChiquitinesResources/Noticias/" + noticiaService.getNoticia(id).getNombreImagen()));
 		this.noticiaService.deleteNoticia(id);
-		return ResponseEntity.ok(null);
+		return ResponseEntity.ok(new Gson().toJson("Noticia eliminada"));
 	}
 
-	@RequestMapping(value = "{obtener/id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/obtener/{id}", method = RequestMethod.GET)
 	public Noticia getNoticia(@PathVariable Integer id) {
 		Noticia noticia = this.noticiaService.getNoticia(id);
 		return noticia;
