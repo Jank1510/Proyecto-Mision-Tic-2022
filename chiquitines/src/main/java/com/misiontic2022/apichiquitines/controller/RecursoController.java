@@ -57,7 +57,7 @@ public class RecursoController {
 		Materia materia = materiaService.getMateria(ru.getMateria().getId());
 		Usuario usuario = usuarioService.getUsuario(ru.getUsuario().getId());
 		Curso curso = cursoService.getCurso(ru.getUsuario().getId());
-		usuario.setContraseña("");
+		
 
 		List<Recurso> recursos = recursoService.getRecursos();
 		String numeroRecurso;
@@ -72,6 +72,7 @@ public class RecursoController {
 		Recurso recurso = new Recurso(nombreRecurso, numeroRecurso + fileName, file.getContentType(), file.getSize(),
 				fileDownloadUri, materia, curso, usuario);
 		recursoService.guardarRecurso(file, recurso, numeroRecurso + fileName);
+		usuario.setContraseña("");
 		return recurso;
 	}
 

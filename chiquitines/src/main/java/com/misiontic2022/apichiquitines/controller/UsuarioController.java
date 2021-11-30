@@ -1,9 +1,13 @@
 package com.misiontic2022.apichiquitines.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +28,7 @@ public class UsuarioController {
 
 	@Autowired
 	private UsuarioService usuarioService;
+
 
 	@RequestMapping(method = RequestMethod.POST, path = "/login")
 	public UsuarioUtil login(@RequestBody Usuario usuario) {
@@ -54,25 +59,50 @@ public class UsuarioController {
 
 	@RequestMapping(method = RequestMethod.POST, path = "/agregar")
 	public ResponseEntity<String> agregarUsuario(@RequestBody Usuario usuario) {
-		if (usuario.getRol().getId()==1) {
+		if (usuario.getRol().getId() == 1) {
 			return ResponseEntity.ok(new Gson().toJson("No puede agregar otro usuario administrador"));
+		} else {
+			try {
+				usuarioService.agregarUsuario(usuario);
+				usuario.setContraseña("");
+				return ResponseEntity.ok(new Gson().toJson(usuario));
+			} catch (DataIntegrityViolationException e) {
+				return ResponseEntity.ok("ERROR: POSIBLEMENTE ESE NICKNAME YA EXISTE "+e);
+			}
 		}
-		else {		
-			usuarioService.agregarUsuario(usuario);		
-			return ResponseEntity.ok(new Gson().toJson(usuario));	
-		}		
+	}
+
+	@RequestMapping(method = RequestMethod.DELETE, path = "/borrar/{id}")
+	public ResponseEntity<String> borrarUsuario(@PathVariable("id") Integer id) {
+		if (id == 1) {
+			return ResponseEntity.ok(new Gson().toJson("No puede borrar el usuario administrador"));
+		} else {
+			try {
+				usuarioService.borrarUsuario(id);
+				return ResponseEntity.ok(new Gson().toJson("Usuario eliminado"));
+			}catch(DataIntegrityViolationException d) {
+				return ResponseEntity.ok(new Gson().toJson("El usuario no se puede borrar, esta asociado a algun recurso: "+d));
+			}catch(EmptyResultDataAccessException e) {
+				return ResponseEntity.ok(new Gson().toJson("El usuario que referencia no existe: "+e));
+			}
+			
+			
+			
+		}
+	}
+	
+	@RequestMapping(value = "/getAll",method = RequestMethod.GET)
+	public List<Usuario> getUsuarios(){
+		List<Usuario> usuarios = usuarioService.getUsuarios();
+		for(Usuario u : usuarios) {
+			u.setContraseña("");
+		}
+		return usuarios;
+		
 		
 	}
 	
-	@RequestMapping(method = RequestMethod.DELETE, path = "/borrar")
-	public ResponseEntity<String> borrarUsuario(@RequestBody Usuario usuario) {
-		if (usuario.getRol().getId()==1) {
-			return ResponseEntity.ok(new Gson().toJson("No puede borrar el usuario administrador"));
-		}
-		else {		
-			usuarioService.borrarUsuario(usuario);	
-			return ResponseEntity.ok(new Gson().toJson("Usuario eliminado"));	
-		}		
-		
-	}
+	
+	
+	
 }

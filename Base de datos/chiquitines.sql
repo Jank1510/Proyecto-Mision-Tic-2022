@@ -166,7 +166,7 @@ VALUES
 INSERT INTO usuarios(nick_name, contraseña, nombres, apellidos, roles_id)
 VALUES  
 ('admin','admin','Administrador', 'Chiquitines', 1),
-('profesor','chiquitines','Profesor', 'Prueba', 2);
+('profesor','123','Profesor', 'Prueba', 2);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

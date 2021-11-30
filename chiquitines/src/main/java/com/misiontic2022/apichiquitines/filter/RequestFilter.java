@@ -94,22 +94,41 @@ public class RequestFilter implements Filter {
 		System.out.println("---------------------");
 
 		// validacion de usuarios
-		if (url.equals("/usuarios/login")) {
-			chain.doFilter(request, response);
+		if (url.contains("/usuarios")) {
+			if (url.equals("/usuarios/login")) {
+				chain.doFilter(request, response);
+			} else if (url.contains("/getAll") || url.contains("/agregar") || url.contains("/borrar")) {
+				if (idRol == 1) {
+					validarToken(request, response, chain, token);
+				} else {
+					if (idRol == 0) {
+						response.setContentType("application/json");
+						String salida = "{\"ERROR\": \"NO INICIO SESION O NO ENVIO TOKEN\"}";
+						response.getWriter().write(salida);
+					} else {
+						response.setContentType("application/json");
+						String salida = "{\"ERROR\": \"ROL NO AUTORIZADO: DOCENTE NO PUEDE VER VER/AGREGAR/BORRAR USUARIOS \"}";
+						response.getWriter().write(salida);
+
+					}
+
+				}
+
+			}
 		}
 
 		// validacion de urls sugerencias
 		else if (url.contains("/sugerencias")) {
-			if (url.contains("/sugerencias/get") || url.contains("/sugerencias/add")) {
+			if ( url.contains("/sugerencias/add")) {
 				chain.doFilter(request, response);
-			} else if (url.equals("/sugerencias")) {
+			} else if (url.contains("/sugerencias/get") || url.equals("/sugerencias")) {
 				if (idRol == 1) {
 
 					validarToken(request, response, chain, token);
 				} else {
 					if (idRol == 0) {
 						response.setContentType("application/json");
-						String salida = "{\"ERROR\": \"NO INICIO SESION \"}";
+						String salida = "{\"ERROR\": \"NO INICIO SESION O NO ENVIO TOKEN\"}";
 						response.getWriter().write(salida);
 					} else {
 						response.setContentType("application/json");
@@ -132,7 +151,7 @@ public class RequestFilter implements Filter {
 				} else {
 					if (idRol == 0) {
 						response.setContentType("application/json");
-						String salida = "{\"ERROR\": \"NO INICIO SESION \"}";
+						String salida = "{\"ERROR\": \"NO INICIO SESION O NO ENVIO TOKEN \"}";
 						response.getWriter().write(salida);
 					} else {
 						response.setContentType("application/json");
@@ -154,7 +173,7 @@ public class RequestFilter implements Filter {
 				} else {
 					if (idRol == 0) {
 						response.setContentType("application/json");
-						String salida = "{\"ERROR\": \"NO INICIO SESION \"}";
+						String salida = "{\"ERROR\": \"NO INICIO SESION O NO ENVIO TOKEN \"}";
 						response.getWriter().write(salida);
 					} else {
 						response.setContentType("application/json");
@@ -177,7 +196,7 @@ public class RequestFilter implements Filter {
 				} else {
 					if (idRol == 0) {
 						response.setContentType("application/json");
-						String salida = "{\"ERROR\": \"NO INICIO SESION \"}";
+						String salida = "{\"ERROR\": \"NO INICIO SESION O NO ENVIO TOKEN \"}";
 						response.getWriter().write(salida);
 					} else {
 						response.setContentType("application/json");
@@ -192,7 +211,7 @@ public class RequestFilter implements Filter {
 		// validacion de urls de recursos
 		else if (url.contains("/recursos")) {
 			if (url.equals("/recursos/getAll") || url.contains("/recursos/descargar_recurso")
-					|| url.contains("/noticias/obtener")) {
+					|| url.contains("/recursos/obtener")) {
 				chain.doFilter(request, response);
 			} else if (url.contains("/recursos/subir_recurso") || url.contains("/recursos/delete")) {
 				if (idRol == 2) {
@@ -200,16 +219,21 @@ public class RequestFilter implements Filter {
 				} else {
 					if (idRol == 0) {
 						response.setContentType("application/json");
-						String salida = "{\"ERROR\": \"NO INICIO SESION \"}";
+						String salida = "{\"ERROR\": \"NO INICIO SESION O NO ENVIO TOKEN \"}";
 						response.getWriter().write(salida);
 					} else {
 						response.setContentType("application/json");
-						String salida = "{\"ERROR\": \"ROL NO AUTORIZADO ADMIN NO PUEDE BORRAR RECURSOS \"}";
+						String salida = "{\"ERROR\": \"ROL NO AUTORIZADO: ADMIN NO PUEDE BORRAR RECURSOS \"}";
 						response.getWriter().write(salida);
 
 					}
 				}
 			}
+		}
+
+		// validacion url roles
+		else if (url.equals("/roles")) {
+			chain.doFilter(request, response);
 		}
 	}
 
