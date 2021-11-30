@@ -19,6 +19,10 @@ public class UsuarioService {
 		return usuarioRepository.save(usuario);
 	}
 	
+	public void borrarUsuario(Usuario usuario) {
+		usuarioRepository.delete(usuario);
+	}
+	
 	public Usuario getUsuario(Integer id) {
 		Optional<Usuario> usuario = this.usuarioRepository.findById(id);
 		if (usuario.isPresent()) {
