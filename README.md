@@ -109,6 +109,7 @@ Tener en cuenta que la base de datos tiene integridad referencial
 **VERBO:** GET</br>
 **CONSUME:**</br>
 **PRODUCE:** 
+![This is an image](https://github.com/Jank1510/Proyecto-Mision-Tic-2022/blob/backend/Imagenes/Descarga%20de%20archivo.png)
 
 </br>
 </br>
