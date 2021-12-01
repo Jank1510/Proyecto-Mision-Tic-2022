@@ -57,7 +57,7 @@ public class RecursoController {
 		String fileName = recursoService.obtenerNombre(file);
 		Materia materia = materiaService.getMateria(ru.getMateria().getId());
 		Usuario usuario = usuarioService.getUsuario(ru.getUsuario().getId());
-		Curso curso = cursoService.getCurso(ru.getUsuario().getId());
+		Curso curso = cursoService.getCurso(ru.getCurso().getId());
 		
 		List<Recurso> recursos = recursoService.getRecursos();
 		String numeroRecurso;
