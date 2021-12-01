@@ -12,9 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.codec.binary.Base64;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.google.gson.Gson;
+import com.misiontic2022.apichiquitines.model.Recurso;
+import com.misiontic2022.apichiquitines.service.RecursoService;
 import com.misiontic2022.apichiquitines.util.RecursoUtil;
 import com.misiontic2022.apichiquitines.util.UsuarioUtil;
 
@@ -30,6 +33,8 @@ import io.jsonwebtoken.impl.crypto.MacProvider;
 public class RequestFilter implements Filter {
 
 	public static final Key KEY = MacProvider.generateKey();
+	@Autowired
+	private RecursoService recursoService;
 
 	public void validarToken(ServletRequest request, ServletResponse response, FilterChain chain, String token)
 			throws IOException {
@@ -255,8 +260,15 @@ public class RequestFilter implements Filter {
 					}
 				}
 			} else if (url.contains("/recursos/delete")) {
-				if (idRol == 2) {
+				Integer idRecurso = Integer.parseInt( url.split("/")[3]);
+				Recurso recurso = recursoService.getRecurso(idRecurso);
+				if (idRol == 2 && currentUserId == recurso.getUsuario().getId()  ) {
 					validarToken(request, response, chain, token);
+				}else {
+					response.setContentType("application/json");
+					String salida = "{\"ERROR\": \"USUARIO NO AUTORIZADO: EL RECURSO NO LE PERTENECE \"}";
+					response.getWriter().write(salida);
+
 				}
 			}
 		}
