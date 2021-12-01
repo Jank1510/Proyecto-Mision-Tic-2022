@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -57,7 +59,6 @@ public class RecursoController {
 		Materia materia = materiaService.getMateria(ru.getMateria().getId());
 		Usuario usuario = usuarioService.getUsuario(ru.getUsuario().getId());
 		Curso curso = cursoService.getCurso(ru.getUsuario().getId());
-		
 
 		List<Recurso> recursos = recursoService.getRecursos();
 		String numeroRecurso;
@@ -105,12 +106,17 @@ public class RecursoController {
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> deleteRecurso(@PathVariable("id") Integer id) throws IOException {
+	public ResponseEntity<String> deleteRecurso(@PathVariable("id") Integer id) throws IOException {
 
 		Files.deleteIfExists(Paths
 				.get("C:/ChiquitinesResources/ArchivosProfesores/" + recursoService.getRecurso(id).getNombreArchivo()));
-		this.recursoService.deleteRecurso(id);
-		return ResponseEntity.ok(null);
+		try {
+			this.recursoService.deleteRecurso(id);
+			return ResponseEntity.ok(new Gson().toJson("Recurso eliminado"));
+		} catch (EmptyResultDataAccessException e) {
+			return ResponseEntity.ok(new Gson().toJson("El recurso que referencia no existe: " + e));
+		}
+
 	}
 
 	@RequestMapping(value = "/obtener/{id}", method = RequestMethod.GET)
