@@ -500,7 +500,6 @@ en noticia se debe subir un json: {
 donde en archivo, se debe adjuntar un archivo </br>
 en recurso se debe subir un json: {
    "nombreRecurso": "dsadasasd",
-    
     "materia": {
         "id": "1"
     },
