@@ -260,15 +260,25 @@ public class RequestFilter implements Filter {
 					}
 				}
 			} else if (url.contains("/recursos/delete")) {
-				Integer idRecurso = Integer.parseInt( url.split("/")[3]);
+				Integer idRecurso = Integer.parseInt(url.split("/")[3]);
 				Recurso recurso = recursoService.getRecurso(idRecurso);
-				if (idRol == 2 && currentUserId == recurso.getUsuario().getId()  ) {
+				if (idRol == 2 && currentUserId == recurso.getUsuario().getId()) {
 					validarToken(request, response, chain, token);
-				}else {
-					response.setContentType("application/json");
-					String salida = "{\"ERROR\": \"USUARIO NO AUTORIZADO: EL RECURSO NO LE PERTENECE \"}";
-					response.getWriter().write(salida);
+				} else {
+					if (idRol == 0) {
+						response.setContentType("application/json");
+						String salida = "{\"ERROR\": \"NO INICIO SESION O NO ENVIO TOKEN \"}";
+						response.getWriter().write(salida);
+					} else if (idRol == 1) {
+						response.setContentType("application/json");
+						String salida = "{\"ERROR\": \"ROL NO AUTORIZADO: ADMIN NO PUEDE BORRAR RECURSOS \"}";
+						response.getWriter().write(salida);
 
+					} else {
+						response.setContentType("application/json");
+						String salida = "{\"ERROR\": \"USUARIO NO AUTORIZADO: EL RECURSO NO LE PERTENECE \"}";
+						response.getWriter().write(salida);
+					}
 				}
 			}
 		}
