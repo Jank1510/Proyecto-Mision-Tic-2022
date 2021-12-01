@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.stereotype.Component;
@@ -66,7 +67,15 @@ public class RequestFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		
+		HttpServletResponse respuesta = (HttpServletResponse) response;
 		HttpServletRequest peticion = (HttpServletRequest) request;
+		
+		respuesta.addHeader("Access-Control-Allow-Origin", "*");
+		respuesta.addHeader("Access-Control-Allow-Methods", "*");
+		respuesta.addHeader("Access-Control-Allow-Headers", "*");
+		
+
 		String url = peticion.getRequestURI();
 		String token;
 		UsuarioUtil usuario;
