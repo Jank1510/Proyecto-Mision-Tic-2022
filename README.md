@@ -264,7 +264,6 @@ Tener en cuenta que la base de datos tiene integridad referencial
 </br>
 </br>
 
-
 # ***Recursos que necesitan token de Administrador***
 
 > Tener en cuenta enviar el token en el header Authorization, Ejemplo: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm9mZXNvciIsImlhdCI6MTYzODMwMzAyOCwiZXhwIjoxNjM4MzAzOTI4LCJuaWNrTmFtZSI6InByb2Zlc29yIiwicm9sIjp7ImlkIjoyLCJkZXNjcmlwY2lvbiI6IkRvY2VudGUifX0.Js0hw5YNhaGSIVUOrIp12hNg7bsSDUpGddshQqTBu5o
@@ -347,8 +346,6 @@ Tener en cuenta que la base de datos tiene integridad referencial
 ]
 </br>
 </br>
-
-
 
 **RECURSO # 15:** Obtiene todos los usuarios que estan en la base de datos</br>
 **URL:** http://localhost:8080/usuarios/getAll</br>
@@ -478,20 +475,8 @@ en noticia se debe subir un json: {
 </br>
 </br>
 
-**RECURSO # 21:** Agrega un nuevo curso a la bd</br>
-**URL:** http://localhost:8080/cursos/add</br>
-**VERBO:** POST</br>
-**CONSUME:**
-</br>
-**PRODUCE:**
-{
-    "id": 10,
-    "descripcion": "Dibujo"
-}
-</br>
-</br>
 
-**RECURSO # 22:** Borra un curso de la bd</br>
+**RECURSO # 21:** Borra un curso de la bd</br>
 **URL:** http://localhost:8080/cursos/delete/9</br>
 **VERBO:** DELETE</br>
 **CONSUME:**
@@ -506,12 +491,62 @@ en noticia se debe subir un json: {
 
 > Tener en cuenta enviar el token en el header Authorization, Ejemplo: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm9mZXNvciIsImlhdCI6MTYzODMwMzAyOCwiZXhwIjoxNjM4MzAzOTI4LCJuaWNrTmFtZSI6InByb2Zlc29yIiwicm9sIjp7ImlkIjoyLCJkZXNjcmlwY2lvbiI6IkRvY2VudGUifX0.Js0hw5YNhaGSIVUOrIp12hNg7bsSDUpGddshQqTBu5o
 
-**RECURSO # 23:** Sube un recurso a la base de datos</br>
+**RECURSO # 22:** Sube un recurso a la base de datos</br>
 **URL:** http://localhost:8080/recursos/subir_recurso</br>
 **VERBO:** POST</br>
+**CONSUME:** Se requieren los siguientes parametros:</br>
+![This is an image](https://github.com/Jank1510/Proyecto-Mision-Tic-2022/blob/backend/Imagenes/Subir%20recurso.png)
+</br>
+donde en archivo, se debe adjuntar un archivo </br>
+en recurso se debe subir un json: {
+   "nombreRecurso": "dsadasasd",
+    
+    "materia": {
+        "id": "1"
+    },
+    "curso": {
+        "id": "1"
+    },
+    "usuario": {
+        "id": "2"
+    }
+}
+</br>
+**PRODUCE:**
+{
+    "id": 3,
+    "nombreRecurso": "dsadasasd",
+    "nombreArchivo": "3Matriz DOFA.pdf",
+    "tipoArchivo": "application/pdf",
+    "tamaño": 741221,
+    "ruta": "http://localhost:8080/recursos/descargar_recurso/3Matriz%20DOFA.pdf",
+    "materia": {
+        "id": 1,
+        "nombre": "Matematicas"
+    },
+    "curso": {
+        "id": 2,
+        "descripcion": "Kinder"
+    },
+    "usuario": {
+        "id": 2,
+        "nickName": "profesor",
+        "contraseña": "",
+        "nombres": "Profesor",
+        "apellidos": "Prueba",
+        "rol": {
+            "id": 2,
+            "descripcion": "Docente"
+        }
+    }
+}
+</br>
+</br>
+
+**RECURSO # 23:** Borra un recurso de la base de datos con el id</br>
+**URL:** http://localhost:8080/cursos/delete/{id}</br>
+**VERBO:** DELETE</br>
 **CONSUME:**
 </br>
 **PRODUCE:**
-"Curso eliminado"
-</br>
-</br>
+"Recurso eliminado"
