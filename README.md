@@ -313,7 +313,44 @@ Tener en cuenta que la base de datos tiene integridad referencial
 </br>
 </br>
 
-**RECURSO # 14:** Obtiene todos los usuarios que estan en la base de datos</br>
+**RECURSO # 14:** Obtiene todas las sugerencias"canal PQRS" de la base de datos</br>
+**URL:** http://localhost:8080/sugerencias</br>
+**VERBO:** GET</br>
+**CONSUME:**
+</br>
+**PRODUCE:**
+[
+    {
+        "id": 1,
+        "nombresApellidos": "Alvaro Zarabanda",
+        "correo": "alvaroalejo25@gmail.com",
+        "mensaje": "Esto es una sugerencia para el colegio"
+    },
+    {
+        "id": 2,
+        "nombresApellidos": "Alvaro Zarabanda",
+        "correo": "alvaroalejo25@gmail.com",
+        "mensaje": "Esto es una sugerencia para el colegio"
+    },
+    {
+        "id": 3,
+        "nombresApellidos": "Alvaro Zarabanda",
+        "correo": "alvaroalejo25@gmail.com",
+        "mensaje": "Esto es una sugerencia para el colegio"
+    },
+    {
+        "id": 4,
+        "nombresApellidos": "Alvaro Zarabanda",
+        "correo": "alvaroalejo25@gmail.com",
+        "mensaje": "Esto es una sugerencia para el colegio"
+    }
+]
+</br>
+</br>
+
+
+
+**RECURSO # 15:** Obtiene todos los usuarios que estan en la base de datos</br>
 **URL:** http://localhost:8080/usuarios/getAll</br>
 **VERBO:** GET</br>
 **CONSUME:**
@@ -368,21 +405,113 @@ Tener en cuenta que la base de datos tiene integridad referencial
 </br>
 </br>
 
-**RECURSO # 15:** Sube una noticia a la base de datos</br>
+**RECURSO # 16:** Sube una noticia a la base de datos</br>
 **URL:** http://localhost:8080/noticias/subir_noticia</br>
 **VERBO:** POST</br>
-**CONSUME:** Se requieren los siguientes parametros:
-
+**CONSUME:** Se requieren los siguientes parametros:</br>
+![This is an image](https://github.com/Jank1510/Proyecto-Mision-Tic-2022/blob/backend/Imagenes/Subir%20noticia.png)
+</br>
+donde en imagen, se debe adjuntar una imagen en formato .jpg </br>
+en noticia se debe subir un json: {
+    "tituloNoticia": "asfsdvsdfv",  
+  "descripcion": "asdsadsad"
+}
 </br>
 **PRODUCE:**
 {
-    "id": 2,
-    "nombresApellidos": "Alvaro Zarabanda",
-    "correo": "alvaroalejo25@gmail.com",
-    "mensaje": "Esto es una sugerencia para el colegio"
+    "id": 4,
+    "tituloNoticia": "asfsdvsdfv",
+    "nombreImagen": "42018-03-12 14.43.06.jpg",
+    "fecha": "2021-11-30",
+    "ruta": "http://localhost:8080/noticias/getImg/42018-03-12%2014.43.06.jpg",
+    "descripcion": "asdsadsad"
 }
+</br>
+</br>
+
+**RECURSO # 17:** Elimina una noticia en el id</br>
+**URL:** http://localhost:8080/noticias/delete/{id}</br>
+**VERBO:** DELETE</br>
+**CONSUME:**
+</br>
+**PRODUCE:**
+"Noticia eliminada"
+</br>
+</br>
+
+**RECURSO # 18:** Agrega una materia a la base de datos</br>
+**URL:** http://localhost:8080/materias/add</br>
+**VERBO:** POST</br>
+**CONSUME:**
+{
+    "nombre":"Artes"
+}
+</br>
+**PRODUCE:**
+{
+    "id": 7,
+    "nombre": "Artes"
+}
+</br>
+</br>
+
+**RECURSO # 19:** Elimina una materia de la base de datos</br>
+**URL:** http://localhost:8080/materias/delete/{id}</br>
+**VERBO:** DELETE</br>
+**CONSUME:**
+</br>
+**PRODUCE:**
+"Materia eliminada"
+</br>
+</br>
+
+**RECURSO # 20:** Agrega un nuevo curso a la bd</br>
+**URL:** http://localhost:8080/cursos/add</br>
+**VERBO:** POST</br>
+**CONSUME:**
+</br>
+**PRODUCE:**
+{
+    "id": 10,
+    "descripcion": "Dibujo"
+}
+</br>
+</br>
+
+**RECURSO # 21:** Agrega un nuevo curso a la bd</br>
+**URL:** http://localhost:8080/cursos/add</br>
+**VERBO:** POST</br>
+**CONSUME:**
+</br>
+**PRODUCE:**
+{
+    "id": 10,
+    "descripcion": "Dibujo"
+}
+</br>
+</br>
+
+**RECURSO # 22:** Borra un curso de la bd</br>
+**URL:** http://localhost:8080/cursos/delete/9</br>
+**VERBO:** DELETE</br>
+**CONSUME:**
+</br>
+**PRODUCE:**
+"Curso eliminado"
 </br>
 </br>
 
 
 # ***Recursos que necesitan token de Docente***
+
+> Tener en cuenta enviar el token en el header Authorization, Ejemplo: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwcm9mZXNvciIsImlhdCI6MTYzODMwMzAyOCwiZXhwIjoxNjM4MzAzOTI4LCJuaWNrTmFtZSI6InByb2Zlc29yIiwicm9sIjp7ImlkIjoyLCJkZXNjcmlwY2lvbiI6IkRvY2VudGUifX0.Js0hw5YNhaGSIVUOrIp12hNg7bsSDUpGddshQqTBu5o
+
+**RECURSO # 23:** Sube un recurso a la base de datos</br>
+**URL:** http://localhost:8080/recursos/subir_recurso</br>
+**VERBO:** POST</br>
+**CONSUME:**
+</br>
+**PRODUCE:**
+"Curso eliminado"
+</br>
+</br>
