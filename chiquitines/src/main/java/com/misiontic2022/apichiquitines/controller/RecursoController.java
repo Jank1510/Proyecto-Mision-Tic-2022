@@ -59,7 +59,7 @@ public class RecursoController {
 		Materia materia = materiaService.getMateria(ru.getMateria().getId());
 		Usuario usuario = usuarioService.getUsuario(ru.getUsuario().getId());
 		Curso curso = cursoService.getCurso(ru.getUsuario().getId());
-
+		
 		List<Recurso> recursos = recursoService.getRecursos();
 		String numeroRecurso;
 		if (recursos.size() == 0) {
@@ -102,7 +102,11 @@ public class RecursoController {
 
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	public List<Recurso> getRecursos() {
-		return recursoService.getRecursos();
+		List<Recurso> recursos = recursoService.getRecursos();
+		for(Recurso r : recursos) {
+			r.getUsuario().setContraseña("");
+		}
+		return recursos;
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
@@ -122,6 +126,7 @@ public class RecursoController {
 	@RequestMapping(value = "/obtener/{id}", method = RequestMethod.GET)
 	public Recurso getRecurso(@PathVariable Integer id) {
 		Recurso recurso = this.recursoService.getRecurso(id);
+		recurso.getUsuario().setContraseña("");
 		return recurso;
 	}
 

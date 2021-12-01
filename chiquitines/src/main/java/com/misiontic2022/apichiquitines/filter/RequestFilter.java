@@ -15,6 +15,7 @@ import org.apache.commons.codec.binary.Base64;
 import org.springframework.stereotype.Component;
 
 import com.google.gson.Gson;
+import com.misiontic2022.apichiquitines.util.RecursoUtil;
 import com.misiontic2022.apichiquitines.util.UsuarioUtil;
 
 import io.jsonwebtoken.Claims;
@@ -55,7 +56,7 @@ public class RequestFilter implements Filter {
 				response.getWriter().write(salida);
 			} catch (Exception e) {
 				response.setContentType("application/json");
-				String salida = "{\"AUTORIZACION\": \"ERROR, PUEDE QUE EL RECURSO YA NO EXISTA\"}";
+				String salida = "{\"AUTORIZACION\": \"ERROR, PUEDE QUE EL RECURSO NO EXISTA\"}";
 				response.getWriter().write(salida);
 
 			}
@@ -67,19 +68,28 @@ public class RequestFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		
+
 		HttpServletResponse respuesta = (HttpServletResponse) response;
 		HttpServletRequest peticion = (HttpServletRequest) request;
-		
+
 		respuesta.addHeader("Access-Control-Allow-Origin", "*");
 		respuesta.addHeader("Access-Control-Allow-Methods", "*");
 		respuesta.addHeader("Access-Control-Allow-Headers", "*");
-		
 
 		String url = peticion.getRequestURI();
 		String token;
 		UsuarioUtil usuario;
 		Integer idRol = 0;
+		Integer resourceUserId;
+		Integer currentUserId = 0;
+
+		if (peticion.getParameter("recurso") != null) {
+			String recursoParameter = peticion.getParameter("recurso");
+			RecursoUtil recurso = new Gson().fromJson(recursoParameter, RecursoUtil.class);
+			resourceUserId = recurso.getUsuario().getId();
+		} else {
+			resourceUserId = null;
+		}
 
 		if (peticion.getHeader("Authorization") == null) {
 			token = null;
@@ -88,13 +98,14 @@ public class RequestFilter implements Filter {
 			token = peticion.getHeader("Authorization");
 			token = token.substring(7, token.length());
 			String payload = token.split("\\.")[1];
-
 			String userJson = new String(Base64.decodeBase64(payload), "UTF-8");
 			usuario = new Gson().fromJson(userJson, UsuarioUtil.class);
 		}
 
 		if (usuario != null) {
 			idRol = usuario.getRol().getId();
+			currentUserId = usuario.getId();
+
 		}
 		System.out.println("---------------------");
 		System.out.println(idRol);
@@ -128,7 +139,7 @@ public class RequestFilter implements Filter {
 
 		// validacion de urls sugerencias
 		else if (url.contains("/sugerencias")) {
-			if ( url.contains("/sugerencias/add")) {
+			if (url.contains("/sugerencias/add")) {
 				chain.doFilter(request, response);
 			} else if (url.contains("/sugerencias/get") || url.equals("/sugerencias")) {
 				if (idRol == 1) {
@@ -222,9 +233,15 @@ public class RequestFilter implements Filter {
 			if (url.equals("/recursos/getAll") || url.contains("/recursos/descargar_recurso")
 					|| url.contains("/recursos/obtener")) {
 				chain.doFilter(request, response);
-			} else if (url.contains("/recursos/subir_recurso") || url.contains("/recursos/delete")) {
+			} else if (url.contains("/recursos/subir_recurso")) {
 				if (idRol == 2) {
-					validarToken(request, response, chain, token);
+					if (resourceUserId == currentUserId) {
+						validarToken(request, response, chain, token);
+					} else {
+						String salida = "{\"ERROR\": \"NO PUEDE AGREGAR RECURSOS CON EL ID DE OTRO USUARIO\"}";
+						response.getWriter().write(salida);
+					}
+
 				} else {
 					if (idRol == 0) {
 						response.setContentType("application/json");
@@ -236,6 +253,10 @@ public class RequestFilter implements Filter {
 						response.getWriter().write(salida);
 
 					}
+				}
+			} else if (url.contains("/recursos/delete")) {
+				if (idRol == 2) {
+					validarToken(request, response, chain, token);
 				}
 			}
 		}

@@ -47,7 +47,7 @@ public class UsuarioController {
 			long tiempo = System.currentTimeMillis();
 			token = Jwts.builder().signWith(SignatureAlgorithm.HS256, RequestFilter.KEY)
 					.setSubject(usuarioUtil.getNickName()).setIssuedAt(new Date(tiempo))
-					.setExpiration(new Date(tiempo + 900000)).claim("nickName", usuarioUtil.getNickName())
+					.setExpiration(new Date(tiempo + 900000)).claim("id",usuarioUtil.getId()).claim("nickName", usuarioUtil.getNickName())
 					.claim("rol", usuarioUtil.getRol()).compact();
 
 		}

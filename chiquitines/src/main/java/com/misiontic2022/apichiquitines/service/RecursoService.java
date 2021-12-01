@@ -43,10 +43,6 @@ public class RecursoService {
 
 	public List<Recurso> getRecursos() {
 		List<Recurso> recursos = recursoRepository.findAll();
-		 
-		for (Recurso r : recursos) {
-			r.getUsuario().setContraseña("");
-		}
 		return recursos;
 	}
 	
