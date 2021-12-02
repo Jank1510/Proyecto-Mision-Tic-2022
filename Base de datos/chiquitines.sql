@@ -27,7 +27,6 @@ CREATE TABLE IF NOT EXISTS `chiquitines`.`contactenos` (
   `mensaje` VARCHAR(300) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -38,7 +37,8 @@ COLLATE = utf8mb4_0900_ai_ci;
 CREATE TABLE IF NOT EXISTS `chiquitines`.`cursos` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `descripcion` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `descripcion_UNIQUE` (`descripcion` ASC) VISIBLE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
@@ -51,7 +51,8 @@ COLLATE = utf8mb4_0900_ai_ci;
 CREATE TABLE IF NOT EXISTS `chiquitines`.`materias` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id`))
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `nombre_UNIQUE` (`nombre` ASC) VISIBLE)
 ENGINE = InnoDB
 AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
@@ -64,7 +65,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 CREATE TABLE IF NOT EXISTS `chiquitines`.`noticias` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `titulo_noticia` VARCHAR(100) NOT NULL,
-  `nombre_imagen` VARCHAR(100) NULL,
+  `nombre_imagen` VARCHAR(100) NULL DEFAULT NULL,
   `fecha` DATE NOT NULL,
   `ruta` VARCHAR(400) NOT NULL,
   `descripcion` VARCHAR(300) NOT NULL,
@@ -115,9 +116,9 @@ COLLATE = utf8mb4_0900_ai_ci;
 CREATE TABLE IF NOT EXISTS `chiquitines`.`recursos` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre_recurso` VARCHAR(45) NOT NULL,
-  `nombre_archivo` VARCHAR(45) NULL,
-  `tipo_archivo` VARCHAR(45) NULL,
-  `tamaño` LONGBLOB NULL,
+  `nombre_archivo` VARCHAR(45) NULL DEFAULT NULL,
+  `tipo_archivo` VARCHAR(45) NULL DEFAULT NULL,
+  `tamaño` LONGBLOB NULL DEFAULT NULL,
   `ruta` VARCHAR(400) NOT NULL,
   `materias_id` INT NOT NULL,
   `cursos_id` INT NOT NULL,
@@ -129,13 +130,14 @@ CREATE TABLE IF NOT EXISTS `chiquitines`.`recursos` (
   CONSTRAINT `cursos_id`
     FOREIGN KEY (`cursos_id`)
     REFERENCES `chiquitines`.`cursos` (`id`),
-  CONSTRAINT `usuarios_id`
-    FOREIGN KEY (`usuarios_id`)
-    REFERENCES `chiquitines`.`usuarios` (`id`),
   CONSTRAINT `materias_id`
     FOREIGN KEY (`materias_id`)
-    REFERENCES `chiquitines`.`materias` (`id`))
+    REFERENCES `chiquitines`.`materias` (`id`),
+  CONSTRAINT `usuarios_id`
+    FOREIGN KEY (`usuarios_id`)
+    REFERENCES `chiquitines`.`usuarios` (`id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 1
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -153,10 +155,14 @@ VALUES
 INSERT INTO materias(nombre)
 VALUES  
 ('Matematicas'),
-('Español'),
+('Ciencias Naturales'),
 ('Sociales'),
-('Musica'),
-('Ingles');
+('Religion'),
+('Etica y Valores'),
+('Ingles'),
+('Informatica'),
+('Castellano'),
+('Geometria');
 
 INSERT INTO roles(descripcion)
 VALUES  
