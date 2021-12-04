@@ -7,7 +7,7 @@ import com.misiontic2022.apichiquitines.util.NoticiasFileStorageProperties;
 import com.misiontic2022.apichiquitines.util.RecursosFileStorageProperties;
 
 @SpringBootApplication
-@EnableConfigurationProperties({ RecursosFileStorageProperties.class, NoticiasFileStorageProperties.class })
+@EnableConfigurationProperties({NoticiasFileStorageProperties.class, RecursosFileStorageProperties.class })
 public class ChiquitinesApplication {
 
 	public static void main(String[] args) {

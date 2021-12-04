@@ -30,9 +30,11 @@ public class RecursoService {
 	private RecursoRepository recursoRepository;
 
 	@Autowired
-	public RecursoService(RecursosFileStorageProperties storageProperties) {
-		this.fileStorageLocation = Paths.get(storageProperties.getUploadDir()).toAbsolutePath().normalize();
-
+	public RecursoService(RecursosFileStorageProperties recursoStorageProperties) {
+		this.fileStorageLocation = Paths.get(recursoStorageProperties.getUploadDir()).toAbsolutePath().normalize();
+		
+	
+		
 		try {
 			Files.createDirectories(this.fileStorageLocation);
 		} catch (Exception ex) {

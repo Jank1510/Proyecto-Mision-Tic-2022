@@ -123,7 +123,7 @@ public class RequestFilter implements Filter {
 			if (url.equals("/usuarios/login")) {
 				chain.doFilter(request, response);
 			} else if (url.contains("/getAll") || url.contains("/agregar") || url.contains("/borrar")) {
-				if (idRol == 1) {
+				if (idRol == 5) {
 					validarToken(request, response, chain, token);
 				} else {
 					if (idRol == 0) {
@@ -147,7 +147,7 @@ public class RequestFilter implements Filter {
 			if (url.contains("/sugerencias/add")) {
 				chain.doFilter(request, response);
 			} else if (url.contains("/sugerencias/get") || url.equals("/sugerencias")) {
-				if (idRol == 1) {
+				if (idRol == 5) {
 
 					validarToken(request, response, chain, token);
 				} else {
@@ -171,7 +171,7 @@ public class RequestFilter implements Filter {
 			if (url.equals("/cursos")) {
 				chain.doFilter(request, response);
 			} else if (url.contains("/cursos/add") || url.contains("/cursos/delete")) {
-				if (idRol == 1) {
+				if (idRol == 5) {
 					validarToken(request, response, chain, token);
 				} else {
 					if (idRol == 0) {
@@ -193,7 +193,7 @@ public class RequestFilter implements Filter {
 			if (url.equals("/materias")) {
 				chain.doFilter(request, response);
 			} else if (url.contains("/materias/add") || url.contains("/materias/delete")) {
-				if (idRol == 1) {
+				if (idRol == 5) {
 					validarToken(request, response, chain, token);
 				} else {
 					if (idRol == 0) {
@@ -216,7 +216,7 @@ public class RequestFilter implements Filter {
 					|| url.contains("/noticias/obtener")) {
 				chain.doFilter(request, response);
 			} else if (url.contains("/noticias/subir_noticia") || url.contains("/noticias/delete")) {
-				if (idRol == 1) {
+				if (idRol == 5) {
 					validarToken(request, response, chain, token);
 				} else {
 					if (idRol == 0) {
@@ -239,7 +239,7 @@ public class RequestFilter implements Filter {
 					|| url.contains("/recursos/obtener")) {
 				chain.doFilter(request, response);
 			} else if (url.contains("/recursos/subir_recurso")) {
-				if (idRol == 2) {
+				if (idRol == 15) {
 					if (resourceUserId == currentUserId) {
 						validarToken(request, response, chain, token);
 					} else {
@@ -254,7 +254,7 @@ public class RequestFilter implements Filter {
 						response.getWriter().write(salida);
 					} else {
 						response.setContentType("application/json");
-						String salida = "{\"ERROR\": \"ROL NO AUTORIZADO: ADMIN NO PUEDE BORRAR RECURSOS \"}";
+						String salida = "{\"ERROR\": \"ROL NO AUTORIZADO: ADMIN NO PUEDE AGREGAR/BORRAR RECURSOS \"}";
 						response.getWriter().write(salida);
 
 					}
@@ -262,14 +262,14 @@ public class RequestFilter implements Filter {
 			} else if (url.contains("/recursos/delete")) {
 				Integer idRecurso = Integer.parseInt(url.split("/")[3]);
 				Recurso recurso = recursoService.getRecurso(idRecurso);
-				if (idRol == 2 && currentUserId == recurso.getUsuario().getId()) {
+				if (idRol == 15 && currentUserId == recurso.getUsuario().getId()) {
 					validarToken(request, response, chain, token);
 				} else {
 					if (idRol == 0) {
 						response.setContentType("application/json");
 						String salida = "{\"ERROR\": \"NO INICIO SESION O NO ENVIO TOKEN \"}";
 						response.getWriter().write(salida);
-					} else if (idRol == 1) {
+					} else if (idRol == 5) {
 						response.setContentType("application/json");
 						String salida = "{\"ERROR\": \"ROL NO AUTORIZADO: ADMIN NO PUEDE BORRAR RECURSOS \"}";
 						response.getWriter().write(salida);

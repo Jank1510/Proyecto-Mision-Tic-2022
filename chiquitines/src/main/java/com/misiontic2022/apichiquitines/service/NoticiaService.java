@@ -29,8 +29,10 @@ public class NoticiaService {
 	private NoticiaRepository noticiaRepository;
 
 	@Autowired
-	public NoticiaService(NoticiasFileStorageProperties storageProperties) {
-		this.fileStorageLocation = Paths.get(storageProperties.getUploadDir()).toAbsolutePath().normalize();
+	public NoticiaService(NoticiasFileStorageProperties noticiaStorageProperties) {
+		this.fileStorageLocation = Paths.get(noticiaStorageProperties.getUploadDir()).normalize();
+		
+		
 
 		try {
 			Files.createDirectories(this.fileStorageLocation);

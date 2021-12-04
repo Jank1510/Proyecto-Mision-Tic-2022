@@ -33,6 +33,7 @@ import com.misiontic2022.apichiquitines.service.MateriaService;
 import com.misiontic2022.apichiquitines.service.RecursoService;
 import com.misiontic2022.apichiquitines.service.UsuarioService;
 import com.misiontic2022.apichiquitines.util.RecursoUtil;
+import com.misiontic2022.apichiquitines.util.RecursosFileStorageProperties;
 
 @RestController
 @RequestMapping("/recursos")
@@ -48,6 +49,8 @@ public class RecursoController {
 	private CursoService cursoService;
 	@Autowired
 	private UsuarioService usuarioService;
+	@Autowired
+	private RecursosFileStorageProperties recursoStorageProperties;
 
 	@RequestMapping(value = "/subir_recurso", method = RequestMethod.POST)
 	public Recurso subirRecurso(@RequestParam("archivo") MultipartFile file,
@@ -58,7 +61,7 @@ public class RecursoController {
 		Materia materia = materiaService.getMateria(ru.getMateria().getId());
 		Usuario usuario = usuarioService.getUsuario(ru.getUsuario().getId());
 		Curso curso = cursoService.getCurso(ru.getCurso().getId());
-		
+
 		List<Recurso> recursos = recursoService.getRecursos();
 		String numeroRecurso;
 		if (recursos.size() == 0) {
@@ -102,7 +105,7 @@ public class RecursoController {
 	@RequestMapping(value = "/getAll", method = RequestMethod.GET)
 	public List<Recurso> getRecursos() {
 		List<Recurso> recursos = recursoService.getRecursos();
-		for(Recurso r : recursos) {
+		for (Recurso r : recursos) {
 			r.getUsuario().setContraseña("");
 		}
 		return recursos;
@@ -112,7 +115,9 @@ public class RecursoController {
 	public ResponseEntity<String> deleteRecurso(@PathVariable("id") Integer id) throws IOException {
 
 		Files.deleteIfExists(Paths
-				.get("C:/ChiquitinesResources/ArchivosProfesores/" + recursoService.getRecurso(id).getNombreArchivo()));
+				.get(recursoStorageProperties.getUploadDir() + "\\" + recursoService.getRecurso(id).getNombreArchivo())
+				.toAbsolutePath().normalize());
+
 		try {
 			this.recursoService.deleteRecurso(id);
 			return ResponseEntity.ok(new Gson().toJson("Recurso eliminado"));
