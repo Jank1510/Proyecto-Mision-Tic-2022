@@ -159,8 +159,8 @@ VALUES
 
 INSERT INTO usuarios(nick_name, contraseña, nombres, apellidos, roles_id)
 VALUES  
-('admin','admin','Administrador', 'Chiquitines', 1),
-('profesor','123','Profesor', 'Prueba', 2);
+('admin','admin','Administrador', 'Chiquitines', 5),
+('profesor','123','Profesor', 'Prueba', 15);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
