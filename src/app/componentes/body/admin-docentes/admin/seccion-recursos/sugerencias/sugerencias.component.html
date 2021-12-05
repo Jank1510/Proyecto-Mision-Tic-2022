@@ -1,0 +1,23 @@
+<app-botones-secciones></app-botones-secciones>
+
+<div class="container">
+    <table class="table table-dark table-hover table-bordered row-border">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Mensaje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let sug of sugerencias">
+                <td>{{sug.id}}</td>
+                <td>{{sug.nombresApellidos}}</td>
+                <td>{{sug.correo}}</td>
+                <td>{{sug.mensaje}}</td>
+            
+            </tr>             
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,31 @@
+<div class="container" id="principal">
+    <table class="table table-dark table-hover table-bordered row-border">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Materia</th>
+                <th scope="col">Curso</th>
+                <th scope="col">Archivo</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let info of data">
+                <th scope="row">1</th>
+                <td>{{info.nombreRecurso}}</td>
+                <td>{{info.materia.nombre}}</td>
+                <td>{{info.curso.descripcion}}</td>
+                <td>{{info.ruta}}</td>
+                <td><button type="button" class="btn btn-outline-danger btn-sm">Danger</button></td>
+
+            </tr>            
+        </tbody>
+    </table>
+
+    <div id="btn">
+            <button (click)="CrearRecurso()" style="margin-right: 16%;" type="button" class="btn btn-secondary">Agregar Recuso</button>
+            <br>
+            <button style="margin-left: 16%;" id="botones" type="button" class="btn btn-secondary">Cerrar Sesion</button>
+    </div>
+</div>

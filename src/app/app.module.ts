@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,8 +12,23 @@ import { HimnoComponent } from './componentes/body/quienes-somos/himno/himno.com
 import { MisionComponent } from './componentes/body/quienes-somos/mision/mision.component';
 import { HeaderComponent } from './componentes/header/header.component';
 import { ContactenosComponent } from './componentes/body/contactenos/contactenos.component';
-import { DocentesComponent } from './componentes/body/docentes/docentes.component';
+import { DocentesComponent } from './componentes/body/admin-docentes/docentes.component';
 import { InicioComponent } from './componentes/body/inicio/inicio.component';
+import {UloginService} from '../app/services/ulogin.service'
+import  {HttpClientModule} from '@angular/common/http'
+import { AgregarRecursoComponentDocentes } from './componentes/body/admin-docentes/docentes/agregar-recurso/agregar-recurso.component';
+import { SeccionRecursosComponentDocentes } from './componentes/body/admin-docentes/docentes/seccion-recursos/seccion-recursos.component';
+import { SugerenciasComponent } from './componentes/body/admin-docentes/admin/seccion-recursos/sugerencias/sugerencias.component';
+import { NoticiasComponent } from './componentes/body/admin-docentes/admin/seccion-recursos/noticias/noticias.component';
+import { CursosComponent } from './componentes/body/admin-docentes/admin/seccion-recursos/cursos/cursos.component';
+import { MateriasComponent } from './componentes/body/admin-docentes/admin/seccion-recursos/materias/materias.component';
+import { UsuariosComponent } from './componentes/body/admin-docentes/admin/seccion-recursos/usuarios/usuarios.component';
+import { BotonesSeccionesComponent } from './componentes/body/admin-docentes/admin/seccion-recursos/botones-secciones/botones-secciones.component';
+import { ComponenteDeRecargaComponent } from './componentes/body/admin-docentes/admin/seccion-recursos/componente-de-recarga/componente-de-recarga.component';
+import { AgregarCursosComponent } from './componentes/body/admin-docentes/admin/agregar-recursos/agregar-cursos/agregar-cursos.component';
+import { AgregarMateriasComponent } from './componentes/body/admin-docentes/admin/agregar-recursos/agregar-materias/agregar-materias.component';
+import { AgregarNoticiasComponent } from './componentes/body/admin-docentes/admin/agregar-recursos/agregar-noticias/agregar-noticias.component';
+import { AgregarUsuariosComponent } from './componentes/body/admin-docentes/admin/agregar-recursos/agregar-usuarios/agregar-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +42,28 @@ import { InicioComponent } from './componentes/body/inicio/inicio.component';
     HeaderComponent,
     ContactenosComponent,
     DocentesComponent,
-    InicioComponent
+    InicioComponent,
+    AgregarRecursoComponentDocentes,
+    SeccionRecursosComponentDocentes,
+    SugerenciasComponent,
+    NoticiasComponent,
+    CursosComponent,
+    MateriasComponent,
+    UsuariosComponent,
+    BotonesSeccionesComponent,
+    ComponenteDeRecargaComponent,
+    AgregarCursosComponent,
+    AgregarMateriasComponent,
+    AgregarNoticiasComponent,
+    AgregarUsuariosComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UloginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

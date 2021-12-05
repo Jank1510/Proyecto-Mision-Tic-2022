@@ -11,14 +11,15 @@
                 </div>
 
                 <!-- Login Form -->
-                <form>
-                    <input type="text" id="login" class="fadeIn second" name="login" placeholder="Usuario">
-                    <input type="text" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
-                    <input type="button" class="fadeIn fourth" onclick="validarLogin()" value="Entrar">
-                </form>
+                <form >
+                    <input [(ngModel)]="usuario" type="text" id="login" class="fadeIn second" name="login" placeholder="Usuario">
+                    <input [(ngModel)]="password" type="text" id="password" class="fadeIn third" name="login" placeholder="Contraseña">
+                    <input type="button" class="fadeIn fourth" (click)="login()" value="Entrar">
+                </form> 
 
             </div>
         </div>
 
     </div>
 </div>
+

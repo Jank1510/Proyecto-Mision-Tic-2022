@@ -1,11 +1,12 @@
 #divMain{
-    margin-top: 10%;
+    margin-top: 8%;
 }
 #form{
     text-align: center;
-}
+} 
 .textos {
     border-radius: 10px;
+    position: relative;
 }
 
 #form button{
@@ -45,24 +46,25 @@
 @media (min-width: 796px) {
     /*adaptacion de el apartado contactenos*/
   #nombreapellido {
-    width: 50%;
+    width: 48%;
     height: 25px;
   }
   #email {
-    width: 40%;
+    width: 38%;
     height: 25px;
   }
   #telefono {
-    width: 9%;
+    width: 10%;
     height: 25px;
   }
   #mensaje {
-    width: 50%;
+    width: 48%;
     height: 100px;
   }
   #form p {
-    width: 50%;
-    margin-left: 25%;
-    text-align: justify;
+    width: 48%;
+margin-left: 26%;
+text-align: justify;
+font-size: 15px;
   }
 }

@@ -1,20 +1,18 @@
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div id="divMain">
     <form id="form">
         <legend>
-            <h1>Contactenos</h1>
+            <h3>Contactenos</h3>
         </legend>
         <br>
-        <input id="nombreapellido" type="text" name="datos" class="textos"
+        <input [(ngModel)]="nombreapellido" id="nombreapellido" type="text" name="datos" class="textos" style="z-index: 1;"
             placeholder="  Nombres y Apellidos *">
-        <br>
-        <br>
-        <input id="email" type="email" name="email" class="textos" placeholder="  Email *">
+        <br><br>
+        <input [(ngModel)]="email" id="email" type="email" name="email" class="textos" placeholder="  Email *">
         <input id="telefono" type="tel" name="telefono" class="textos" placeholder="  Telefono">
-        <br>
-        <br>
-        <textarea id="mensaje" name="mensaje" class="textos" placeholder=" Mensaje *"></textarea>
-        <br>
-        <br>
+        <br><br>
+        <textarea [(ngModel)]="mensaje" id="mensaje" name="mensaje" class="textos" placeholder=" Mensaje *"></textarea>
+        <br><br>
         <div id="parrafocontactenos">
             <p>
                 Instituto los chiquitines te informa que los
@@ -26,10 +24,10 @@
             </p>
         </div>
 
-        <br>
-        <input type="checkbox" name="Politica " id="condiciones"> Aceptar politica de privacidad
-        <br><br><br>
+        <input [(ngModel)]="condiciones" type="checkbox" name="Politica " id="condiciones" style="position: relative;"> Aceptar politica de
+        privacidad
+        <br><br>
 
-        <button type="button" onclick="getDatos()"> Enviar </button>
+        <button type="button" style="position: relative"(click)="(ContactenosDatos())"> Enviar </button>
     </form>
 </div>
