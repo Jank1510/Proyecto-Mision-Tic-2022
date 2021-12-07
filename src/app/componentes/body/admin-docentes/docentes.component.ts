@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { UloginService } from 'src/app/services/ulogin.service';
 import { LoginI } from 'src/app/modelos/login.interface';
 import { Router } from '@angular/router';
@@ -13,8 +13,8 @@ import { finalize } from 'rxjs/operators';
 })
 export class DocentesComponent implements OnInit {
 
-  usuario: string;
-  password: string;
+   usuario: string;
+   password: string;
   user: any;
   list: any = [];
   ValidarUsuario: boolean;
@@ -49,19 +49,22 @@ export class DocentesComponent implements OnInit {
         }
         this.uloginService.PostLogin(this.user).pipe(finalize(() => this.validaruser())).subscribe((response: any) => {
           this.list = response;
+
           for (let jank in this.list) {
             if (jank === "rol") {
-              if (this.list[jank].id === 15) {// el 2 hace referencia al rol de docentes 
+              if (this.list[jank].id === 15) {// el 15 hace referencia al rol de docentes 
                 this.router.navigate(['seccion-recursos-docentes']);
               }
-              if (this.list[jank].id === 5){
+              if (this.list[jank].id === 5) {
                 this.router.navigate(['seccion-recursos-curso-admin'])
               }
             }
             if (jank === "token") {
-              localStorage.setItem("token", (this.list[jank]));
+              localStorage.setItem("token", (this.list[jank]));//enviar token
 
             }
+
+
           }
           this.ValidarUsuario = true;//esto para validar si entra aca ya q solo entra cuando existe el usuario
         })
@@ -76,6 +79,7 @@ export class DocentesComponent implements OnInit {
         title: 'El Usuario Es Incorrecto!'
       })
     }
+
   }
-  
+
 }

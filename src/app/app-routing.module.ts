@@ -30,17 +30,17 @@ const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
   { path: 'contactenos', component: ContactenosComponent },
   { path: 'docentes', component: DocentesComponent },
-  { path: 'agregar-recurso-docentes', component: AgregarRecursoComponentDocentes, canActivate:[VigilanteGuard] },
-  { path: 'seccion-recursos-docentes', component: SeccionRecursosComponentDocentes , canActivate:[VigilanteGuard] },
-  { path: 'seccion-recursos-curso-admin', component: CursosComponent },
-  { path: 'seccion-recursos-materias-admin', component: MateriasComponent },
-  { path: 'seccion-recursos-noticias-admin', component: NoticiasComponent },
-  { path: 'seccion-recursos-sugerencias-admin', component: SugerenciasComponent },
-  { path: 'seccion-recursos-usuarios-admin', component: UsuariosComponent },
-  { path: 'seccion-recursos-botones-admin', component: BotonesSeccionesComponent },
-  { path: 'recarga', component: ComponenteDeRecargaComponent },
-  { path: 'agregar-noticias', component: AgregarNoticiasComponent },
-  { path:  'agregar-usuario', component: AgregarUsuariosComponent }
+  { path: 'agregar-recurso-docentes', component: AgregarRecursoComponentDocentes },
+  { path: 'seccion-recursos-docentes', component: SeccionRecursosComponentDocentes  },
+  { path: 'seccion-recursos-curso-admin', component: CursosComponent ,canActivate:[VigilanteGuard] },
+  { path: 'seccion-recursos-materias-admin', component: MateriasComponent ,canActivate:[VigilanteGuard] },
+  { path: 'seccion-recursos-noticias-admin', component: NoticiasComponent ,canActivate:[VigilanteGuard] },
+  { path: 'seccion-recursos-sugerencias-admin', component: SugerenciasComponent,canActivate:[VigilanteGuard]  },
+  { path: 'seccion-recursos-usuarios-admin', component: UsuariosComponent ,canActivate:[VigilanteGuard] },
+  { path: 'seccion-recursos-botones-admin', component: BotonesSeccionesComponent ,canActivate:[VigilanteGuard]  },
+  { path: 'recarga', component: ComponenteDeRecargaComponent ,canActivate:[VigilanteGuard] },
+  { path: 'agregar-noticias', component: AgregarNoticiasComponent ,canActivate:[VigilanteGuard] },
+  { path:  'agregar-usuario', component: AgregarUsuariosComponent ,canActivate:[VigilanteGuard] }
 
 ];
 

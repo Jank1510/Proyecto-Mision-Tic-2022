@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UloginService {
   url:string="https://chiquitines-backend.herokuapp.com"
+  tokenVerif:string=""
 
   constructor(private http: HttpClient) {
     console.log("llego al servicio")
    }
+
+  VerifiLogin(){
+    let direccion =this.url+"/usuarios/tokenIsValid"
+    let  tokenVerif = localStorage.getItem("token")
+    return this.http.post(direccion,tokenVerif)
+  }
 
   PostLogin(user: any){
     let direccion = this.url+"/usuarios/login"
