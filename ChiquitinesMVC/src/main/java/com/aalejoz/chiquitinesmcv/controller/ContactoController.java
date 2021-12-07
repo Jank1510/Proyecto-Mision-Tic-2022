@@ -5,8 +5,9 @@
  */
 package com.aalejoz.chiquitinesmcv.controller;
 
+import com.aalejoz.chiquitinesmcv.bd.factory.FabricaConexion;
+import com.aalejoz.chiquitinesmvc.model.DAO.ContactoDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,19 +32,11 @@ public class ContactoController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ContactoController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ContactoController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        
+        FabricaConexion fabrica = new FabricaConexion();
+        ContactoDAO contactoDAO = new ContactoDAO(fabrica.getConexion("MYSQL"));
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

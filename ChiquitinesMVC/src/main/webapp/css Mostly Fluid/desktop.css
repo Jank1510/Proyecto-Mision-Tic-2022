@@ -1,0 +1,97 @@
+@media (min-width: 796px) {
+  #menu #menuDesktop {
+    display: block;
+  }
+  #menu header main #img {
+    display: block;
+  }
+  #menu header main #text {
+    /*textos del mision vision objetivos historia xd*/
+    width: 45%;
+    margin-left: 5%;
+    margin-top: 2%;
+  }
+  #menu header main {
+    width: 100%;
+    float: left;
+  }
+  /*logo*/
+  #menu #logo {
+    margin: -15px;
+    margin-left: 2%;
+    float: left;
+  }
+  #menu #logo img {
+    width: 150px;
+  }
+  #menu #itemPhoneMain {
+    display: none;
+  }
+  #menu header #mainprincipal h1 {
+    font-size: 190%;
+  }
+  #menu header #mainprincipal {
+    padding-top: 10%;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+  #texthimno {
+    /*texto del himno*/
+    width: 40%;
+    margin-top: 5%;
+    margin-left: 10%;
+  }
+  #bandera {
+    margin-top: 5%;
+  }
+  #menu header main .divmain {
+    float: left;
+  }
+  #menu header main .divmainhimno {
+    /*referencia solo a himno*/
+    float: left;
+  }
+  #imghistoria {
+    display: block;
+  }
+  /*adaptacion de el apartado contactenos*/
+  #nombreapellido {
+    width: 50%;
+    height: 25px;
+  }
+  #email {
+    width: 40%;
+    height: 25px;
+  }
+  #telefono {
+    width: 9%;
+    height: 25px;
+  }
+  #mensaje {
+    width: 50%;
+    height: 100px;
+  }
+  #menu header main form p {
+    width: 50%;
+    margin-left: 25%;
+    text-align: justify;
+  }
+  /*************************/
+   #laterales2{
+    display: block;
+    width: 20%;
+    padding-top: 40px;
+    padding-left: 8%;
+    text-align: left;
+  }
+  #laterales1{
+    display: block;
+    width: 20%;
+    padding-top: 65px;
+    padding-left: 8%;
+    text-align: left;
+  }
+  #central{
+    width:40% ;
+  }
+}
