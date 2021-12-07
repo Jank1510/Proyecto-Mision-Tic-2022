@@ -25,11 +25,9 @@ import { MateriasComponent } from './componentes/body/admin-docentes/admin/secci
 import { UsuariosComponent } from './componentes/body/admin-docentes/admin/seccion-recursos/usuarios/usuarios.component';
 import { BotonesSeccionesComponent } from './componentes/body/admin-docentes/admin/seccion-recursos/botones-secciones/botones-secciones.component';
 import { ComponenteDeRecargaComponent } from './componentes/body/admin-docentes/admin/seccion-recursos/componente-de-recarga/componente-de-recarga.component';
-import { AgregarCursosComponent } from './componentes/body/admin-docentes/admin/agregar-recursos/agregar-cursos/agregar-cursos.component';
-import { AgregarMateriasComponent } from './componentes/body/admin-docentes/admin/agregar-recursos/agregar-materias/agregar-materias.component';
+
 import { AgregarNoticiasComponent } from './componentes/body/admin-docentes/admin/agregar-recursos/agregar-noticias/agregar-noticias.component';
 import { AgregarUsuariosComponent } from './componentes/body/admin-docentes/admin/agregar-recursos/agregar-usuarios/agregar-usuarios.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,8 +50,6 @@ import { AgregarUsuariosComponent } from './componentes/body/admin-docentes/admi
     UsuariosComponent,
     BotonesSeccionesComponent,
     ComponenteDeRecargaComponent,
-    AgregarCursosComponent,
-    AgregarMateriasComponent,
     AgregarNoticiasComponent,
     AgregarUsuariosComponent
   ],

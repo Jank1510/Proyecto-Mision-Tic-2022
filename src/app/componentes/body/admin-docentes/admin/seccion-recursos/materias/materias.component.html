@@ -11,7 +11,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let mat of materias; let i=index">
-                <td>{{i+1}}</td>
+                <td>{{mat.id}}</td>
                 <td>{{mat.nombre}}</td>
                 <td><button (click)="eliminarMaterias(i)" id="btn"type="button" class="btn btn-outline-danger btn-sm">Eliminar</button></td>
     
@@ -19,5 +19,5 @@
         </tbody>
     </table>
     
-<button id="btn"type="button" class="btn btn-warning">Crear Nueva Materia</button>
+<button (click)="AgregarMaterias()" id="btn"type="button" class="btn btn-warning">Crear Nueva Materia</button>
 </div>

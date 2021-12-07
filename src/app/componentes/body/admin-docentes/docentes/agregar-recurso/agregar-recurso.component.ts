@@ -12,8 +12,8 @@ export class AgregarRecursoComponentDocentes implements OnInit {
 
   materias: any;
   cursos: any;
-  public archivos:any=[];
-  datosRecurso:any;
+  public archivos: any = [];
+  datosRecurso: any;
 
   constructor(private uloginService: UloginService, private router: Router) { }
 
@@ -38,30 +38,33 @@ export class AgregarRecursoComponentDocentes implements OnInit {
   }
   b = this.Cursos()
 
-  capturarFile(event: any ){
+  capturarFile(event: any) {
     const archivoCapturado = event.target.files[0]
     this.archivos.push(archivoCapturado)
     console.log(event.target.files)
   }
-  GuardarRecursos(){
-
-    this.datosRecurso={
+  GuardarRecursos() {
+    this.datosRecurso = {
       "nombreRecurso": "xcxcx",
-       
-       "materia": {       "id": "1"
-       },
-       "curso": {
-           "id": "1"
-       },
-       "usuario": {
-           "id": "2"
-       }
-   }
-   console.log(this.archivos)
-   console.log(this.datosRecurso)
 
-    
-    this.uloginService.PostRecursos(this.archivos,this.datosRecurso).subscribe((res:any) => {
+      "materia": {
+        "id": "75"
+      },
+      "curso": {
+        "id": "65"
+      },
+      "usuario": {
+        "id": "15"
+      }
+    }
+    const formulario = new FormData();
+    formulario.append('recurso', this.datosRecurso);
+    formulario.append('archivo',this.archivos);
+
+    console.log(this.archivos)
+    console.log(this.datosRecurso)
+
+    this.uloginService.PostRecursos(formulario).subscribe((res: any) => {
       console.log(res)
     })
   }

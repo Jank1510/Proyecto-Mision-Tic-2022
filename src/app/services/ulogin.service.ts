@@ -33,20 +33,14 @@ export class UloginService {
     return this.http.post(direccion,pqr)
   }
 
-
-  PostRecursos(file:any,json:any){
-
-    const formulario = new FormData();
-    formulario.append('archivo',file);
-    formulario.append('recurso',json);
-
+  PostRecursos(formulario:any){    
     const headers:HttpHeaders=new HttpHeaders({
-      'Content-Type': 'application/json;charset="utf-8',
       'Authorization': 'Bearer '+localStorage.getItem("token")
     })
     let direccion = this.url+"/recursos/subir_recurso"
     return this.http.post(direccion,formulario,{headers: headers})
   }
+
   GetSugerencias(){
     const headers:HttpHeaders=new HttpHeaders({
       'Content-Type': 'application/json;charset="utf-8',
@@ -89,10 +83,23 @@ export class UloginService {
   }
   PostCursos(data:any){
     const headers:HttpHeaders=new HttpHeaders({
-      'Content-Type': 'application/json;charset="utf-8',
       'Authorization': 'Bearer '+localStorage.getItem("token")
     })
     let direccion = this.url+"/cursos/add"
+    return this.http.post(direccion,data,{headers: headers})
+  }
+  PostMaterias(data:any){
+    const headers:HttpHeaders=new HttpHeaders({
+      'Authorization': 'Bearer '+localStorage.getItem("token")
+    })
+    let direccion = this.url+"/materias/add"
+    return this.http.post(direccion,data,{headers: headers})
+  }
+  PostUsuarios(data:any){
+    const headers:HttpHeaders=new HttpHeaders({
+      'Authorization': 'Bearer '+localStorage.getItem("token")
+    })
+    let direccion = this.url+"/usuarios/agregar"
     return this.http.post(direccion,data,{headers: headers})
   }
 }

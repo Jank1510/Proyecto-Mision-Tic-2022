@@ -17,10 +17,9 @@ import { SugerenciasComponent } from './componentes/body/admin-docentes/admin/se
 import { UsuariosComponent } from './componentes/body/admin-docentes/admin/seccion-recursos/usuarios/usuarios.component';
 import { BotonesSeccionesComponent } from './componentes/body/admin-docentes/admin/seccion-recursos/botones-secciones/botones-secciones.component';
 import { ComponenteDeRecargaComponent } from './componentes/body/admin-docentes/admin/seccion-recursos/componente-de-recarga/componente-de-recarga.component';
-import { AgregarCursosComponent } from './componentes/body/admin-docentes/admin/agregar-recursos/agregar-cursos/agregar-cursos.component';
-import { AgregarUsuariosComponent } from './componentes/body/admin-docentes/admin/agregar-recursos/agregar-usuarios/agregar-usuarios.component';
 import { AgregarNoticiasComponent } from './componentes/body/admin-docentes/admin/agregar-recursos/agregar-noticias/agregar-noticias.component';
-import { AgregarMateriasComponent } from './componentes/body/admin-docentes/admin/agregar-recursos/agregar-materias/agregar-materias.component';
+import { AgregarUsuariosComponent } from './componentes/body/admin-docentes/admin/agregar-recursos/agregar-usuarios/agregar-usuarios.component';
+import { VigilanteGuard } from './vigilante.guard';
 
 const routes: Routes = [
   { path: 'mision', component: MisionComponent },
@@ -28,22 +27,20 @@ const routes: Routes = [
   { path: 'objetivos', component: ObjetivosComponent },
   { path: 'historia', component: HistoriaComponent },
   { path: 'himno', component: HimnoComponent },
-  { path: 'inicio', component: InicioComponent},
-  { path: 'contactenos', component: ContactenosComponent},
-  { path: 'docentes', component: DocentesComponent},
-  { path: 'agregar-recurso-docentes', component: AgregarRecursoComponentDocentes},
-  { path: 'seccion-recursos-docentes', component: SeccionRecursosComponentDocentes},
-  { path: 'seccion-recursos-curso-admin', component: CursosComponent},
-  { path: 'seccion-recursos-materias-admin', component: MateriasComponent},
-  { path: 'seccion-recursos-noticias-admin', component: NoticiasComponent},
-  { path: 'seccion-recursos-sugerencias-admin', component: SugerenciasComponent},
-  { path: 'seccion-recursos-usuarios-admin', component: UsuariosComponent},
-  { path: 'seccion-recursos-botones-admin', component: BotonesSeccionesComponent},
-  { path: 'recarga', component: ComponenteDeRecargaComponent},
-  { path: 'agregar-cursos', component: AgregarCursosComponent},
-  { path: 'agregar-materias', component: AgregarMateriasComponent},
-  { path: 'agregar-noticias', component: AgregarNoticiasComponent},
-  { path: 'agregar-usuarios', component: AgregarUsuariosComponent}
+  { path: 'inicio', component: InicioComponent },
+  { path: 'contactenos', component: ContactenosComponent },
+  { path: 'docentes', component: DocentesComponent },
+  { path: 'agregar-recurso-docentes', component: AgregarRecursoComponentDocentes, canActivate:[VigilanteGuard] },
+  { path: 'seccion-recursos-docentes', component: SeccionRecursosComponentDocentes , canActivate:[VigilanteGuard] },
+  { path: 'seccion-recursos-curso-admin', component: CursosComponent },
+  { path: 'seccion-recursos-materias-admin', component: MateriasComponent },
+  { path: 'seccion-recursos-noticias-admin', component: NoticiasComponent },
+  { path: 'seccion-recursos-sugerencias-admin', component: SugerenciasComponent },
+  { path: 'seccion-recursos-usuarios-admin', component: UsuariosComponent },
+  { path: 'seccion-recursos-botones-admin', component: BotonesSeccionesComponent },
+  { path: 'recarga', component: ComponenteDeRecargaComponent },
+  { path: 'agregar-noticias', component: AgregarNoticiasComponent },
+  { path:  'agregar-usuario', component: AgregarUsuariosComponent }
 
 ];
 

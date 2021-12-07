@@ -61,5 +61,8 @@ export class UsuariosComponent implements OnInit {
     })
 
   }
+  CrearUsuario(){
+    this.router.navigate(['agregar-usuario'])
+  }
 
 }

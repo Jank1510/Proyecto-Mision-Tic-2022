@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs/operators';
 import { UloginService } from 'src/app/services/ulogin.service';
 import Swal from 'sweetalert2';
 
@@ -47,7 +48,7 @@ export class CursosComponent implements OnInit {
           'success'
         )
       
-      this.uloginService.DeleteCursos(id).subscribe((response:any) =>{
+      this.uloginService.DeleteCursos(id).pipe(finalize(() => this.CargarCursos())).subscribe((response:any) =>{
         console.log(response)
       })
       this.router.navigate(['seccion-recursos-curso-admin'])
@@ -66,15 +67,16 @@ export class CursosComponent implements OnInit {
     if (curso) {
       this.curso=curso
       this.cursos={
-        "descripcion":"ggg"
+        "descripcion":this.curso
       }
-      console.log(curso)
       Swal.fire('Agregado ¡','','success')
-      this.uloginService.PostCursos(this.cursos).subscribe((response:any)=>{
+      this.uloginService.PostCursos(this.cursos).pipe(finalize(() => this.DevolverACursos())).subscribe((response:any)=>{
         console.log(response)
       })
-      console.log(this.cursos)
+      
     }
+  }
+  DevolverACursos(){
     this.router.navigate(['seccion-recursos-curso-admin'])
   }
 }

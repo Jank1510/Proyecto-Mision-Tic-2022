@@ -11,7 +11,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let cur of cursos; let i= index">
-                <td>{{i+1}}</td>
+                <td>{{cur.id}}</td>
                 <td>{{cur.descripcion}}</td>
                 <td><button (click)="eliminarCurso(i)" id="btn"type="button" class="btn btn-outline-danger btn-sm">Eliminar</button></td>
     

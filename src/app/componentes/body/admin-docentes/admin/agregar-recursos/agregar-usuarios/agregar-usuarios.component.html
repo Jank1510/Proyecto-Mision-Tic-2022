@@ -1,1 +1,42 @@
-<p>agregar-usuarios works!</p>
+<div class="container" id="principal">
+    <form>
+        <div class="form-group row">
+            <label for="colFormLabel" class="col-sm-2 col-form-label">NickName</label>
+            <div class="col-sm-10">
+                <input [(ngModel)]="nickName" name="datos" type="text" class="form-control" id="colFormLabel"
+                    placeholder="usuario">
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label for="colFormLabel" class="col-sm-2 col-form-label">Contraseña</label>
+            <div class="col-sm-10">
+                <input [(ngModel)]="password" name="password" type="text" class="form-control" id="colFormLabel"
+                    placeholder="contraseña">
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label for="colFormLabel" class="col-sm-2 col-form-label">Nombre Usuario</label>
+            <div class="col-sm-10">
+                <input [(ngModel)]="nombre" name="nombre" type="text" class="form-control" id="colFormLabel"
+                    placeholder="Nombre usuario">
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label for="colFormLabel" class="col-sm-2 col-form-label">Apellido Usuario</label>
+            <div class="col-sm-10">
+                <input [(ngModel)]="apellidos" name="apellidos" type="text" class="form-control" id="colFormLabel"
+                    placeholder="Apellido usuario">
+            </div>
+        </div>
+        <br>
+        <br>
+        <div>
+            <button (click)="AgregarUsuario()" style="z-index: 2;position: relative;" type="button"
+                class="btn btn-secondary">Agregar Usuario</button>
+            <br>
+        </div>
+    </form>
+</div>

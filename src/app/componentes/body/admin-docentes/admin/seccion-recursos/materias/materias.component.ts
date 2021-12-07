@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs/operators';
 import { UloginService } from 'src/app/services/ulogin.service';
 import Swal from 'sweetalert2';
 
@@ -52,5 +53,26 @@ export class MateriasComponent implements OnInit {
     this.router.navigate(['seccion-recursos-materias-admin'])
     })
     
+  }
+  async AgregarMaterias(){
+    this.router.navigate(['recarga'])
+    const { value: materias } = await Swal.fire({
+      input: 'text',
+      title: 'INGRESA LA NUEVA MATERIA',
+      inputPlaceholder: 'Nombre de Materia',
+    })
+    if (materias) {
+      this.materias=materias
+      this.materias={
+        "nombre":this.materias
+      }
+      Swal.fire('Agregado ¡','','success')
+      this.uloginService.PostMaterias(this.materias).pipe(finalize(() => this.DevolverAMaterias())).subscribe((response:any)=>{
+        console.log(response)
+      })
+    }
+  }
+  DevolverAMaterias(){
+    this.router.navigate(['seccion-recursos-materias-admin'])
   }
 }
