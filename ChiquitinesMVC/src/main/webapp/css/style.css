@@ -1,20 +1,21 @@
+/*Diseño princiopal*/
 *{
     padding: 0;
     margin: 0;
 }
-header{    
-    background-image: url(./img/bradcam.png);
+header {
+    background-image: url(../img/bradcam.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    height: 10vh;
-    color:white;
+    height: 12vh;
+    color: white;
 }
 /*diseño del menu de escritorio*/
 #menu #menuDesktop{    
     list-style: none;
     margin: 0;
     padding: 0;
-    height: 25px;
+    height: 42px;
     width: auto;    
     border-radius: 10px;
     float: right;
@@ -34,7 +35,7 @@ header{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     margin-top: 15px;
-    
+
 }
 
 #menu #desple {
@@ -110,7 +111,7 @@ header{
     border-radius: 10px;
 }
 
-    /*********/
+/*********/
 
 /*Diseño de la estructura main o contenido xd*/
 #menu header main {
@@ -164,17 +165,17 @@ header{
 }
 /*footer*/
 #footer {
+    display: flex;
     width: 100%;
-    height: 215px;
-    background-image: url(./img/footer-.png); 
+    height: 267px;
+    background-image: url(../img/footer-.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    margin-top: 40px;
-    padding-left: 1%;
-    align-content: center;
+    margin-top: 20vh;
+    justify-content: center;
 }
 .footer{
-    
+
     float:left;
     padding-top: 35px;
     text-align: center;
@@ -190,3 +191,15 @@ header{
     padding-top: 65px;
     margin-top: 25px;
 }
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    align-items: stretch;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+}
+/*************/

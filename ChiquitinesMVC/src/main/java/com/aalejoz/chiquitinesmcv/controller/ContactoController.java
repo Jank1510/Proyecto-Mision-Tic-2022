@@ -7,7 +7,9 @@ package com.aalejoz.chiquitinesmcv.controller;
 
 import com.aalejoz.chiquitinesmcv.bd.factory.FabricaConexion;
 import com.aalejoz.chiquitinesmvc.model.DAO.ContactoDAO;
+import com.aalejoz.chiquitinesmvc.model.entities.Contacto;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,11 +34,25 @@ public class ContactoController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         FabricaConexion fabrica = new FabricaConexion();
         ContactoDAO contactoDAO = new ContactoDAO(fabrica.getConexion("MYSQL"));
-        
-        
+
+        boolean subir = (request.getParameter("subir") != null) ? true : false;
+        System.out.println(subir);
+
+        if (subir) {
+            System.out.println("Entra al metdo");
+            Contacto contacto = new Contacto();
+            contacto.setNombresApellidos(String.valueOf(request.getParameter("nombres")));
+            contacto.setCorreo(String.valueOf(request.getParameter("email")));
+            contacto.setMensaje(String.valueOf(request.getParameter("mensaje")));
+            contactoDAO.add(contacto);
+            response.sendRedirect("contactenos");
+        } else {
+
+            request.getRequestDispatcher("contactenos.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
