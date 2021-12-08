@@ -15,6 +15,7 @@ import java.sql.ResultSet;
  * @author alvar
  */
 public class UsuarioDAO {
+
     private IConexion conexion;
 
     public UsuarioDAO(IConexion conexion) {
@@ -24,7 +25,7 @@ public class UsuarioDAO {
     public Usuario login(String nickName, String password) {
         Usuario usuario = new Usuario();
         try {
-            String sql = "SELECT * FROM usuarios WHERE username = ? AND password = ?";
+            String sql = "SELECT * FROM usuarios WHERE nick_name = ? AND contraseña = ?";
             PreparedStatement pst = this.conexion.conectar().prepareStatement(sql);
             pst.setString(1, nickName);
             pst.setString(2, password);
@@ -40,5 +41,5 @@ public class UsuarioDAO {
 
         return usuario;
     }
-    
+
 }

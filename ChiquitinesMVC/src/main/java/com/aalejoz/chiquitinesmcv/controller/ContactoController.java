@@ -39,10 +39,9 @@ public class ContactoController extends HttpServlet {
         ContactoDAO contactoDAO = new ContactoDAO(fabrica.getConexion("MYSQL"));
 
         boolean subir = (request.getParameter("subir") != null) ? true : false;
-        System.out.println(subir);
+        
 
         if (subir) {
-            System.out.println("Entra al metdo");
             Contacto contacto = new Contacto();
             contacto.setNombresApellidos(String.valueOf(request.getParameter("nombres")));
             contacto.setCorreo(String.valueOf(request.getParameter("email")));

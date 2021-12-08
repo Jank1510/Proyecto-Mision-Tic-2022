@@ -5,13 +5,20 @@
  */
 package com.aalejoz.chiquitinesmcv.controller;
 
+import com.aalejoz.chiquitinesmcv.bd.factory.FabricaConexion;
+import com.aalejoz.chiquitinesmvc.model.DAO.ContactoDAO;
+import com.aalejoz.chiquitinesmvc.model.DAO.UsuarioDAO;
+import com.aalejoz.chiquitinesmvc.model.entities.Contacto;
+import com.aalejoz.chiquitinesmvc.model.entities.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,18 +39,41 @@ public class UsuarioController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet UsuarioController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet UsuarioController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+
+        HttpSession sesion = request.getSession();
+        FabricaConexion fabrica = new FabricaConexion();
+        ContactoDAO contactoDAO = new ContactoDAO(fabrica.getConexion("MYSQL"));
+        UsuarioDAO usuarioDAO = new UsuarioDAO(fabrica.getConexion("MYSQL"));
+
+        if (request.getParameter("cerrar") != null) {
+            sesion.invalidate();
         }
+
+        if (request.getParameter("ingresar") != null) {
+            String username = request.getParameter("usuario");
+            String password = request.getParameter("password");
+
+            Usuario u = usuarioDAO.login(username, password);
+
+            if (u.getId() != 0) {
+                sesion.setAttribute("AUTORIZADO", "SI");
+                sesion.setMaxInactiveInterval(120);
+                u.setPassword("");
+                sesion.setAttribute("usuario", u);
+
+                ArrayList<Contacto> contactos = contactoDAO.listadoContactenos();
+
+                request.setAttribute("contactos", contactos);
+
+                request.getRequestDispatcher("seccion_admin.jsp").forward(request, response);
+
+                return;
+
+            }
+
+        }
+        request.getRequestDispatcher("login.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
