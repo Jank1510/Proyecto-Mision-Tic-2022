@@ -45,12 +45,12 @@ export class MateriasComponent implements OnInit {
           'success'
         )
       
-      this.uloginService.DeleteMaterias(id).subscribe((response:any) =>{
+      this.uloginService.DeleteMaterias(id).pipe(finalize(() => this.DevolverAMaterias())).subscribe((response:any) =>{
         console.log(response)
       })
+    }else{
       this.router.navigate(['seccion-recursos-materias-admin'])
     }
-    this.router.navigate(['seccion-recursos-materias-admin'])
     })
     
   }

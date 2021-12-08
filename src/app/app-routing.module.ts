@@ -19,9 +19,13 @@ import { BotonesSeccionesComponent } from './componentes/body/admin-docentes/adm
 import { ComponenteDeRecargaComponent } from './componentes/body/admin-docentes/admin/seccion-recursos/componente-de-recarga/componente-de-recarga.component';
 import { AgregarNoticiasComponent } from './componentes/body/admin-docentes/admin/agregar-recursos/agregar-noticias/agregar-noticias.component';
 import { AgregarUsuariosComponent } from './componentes/body/admin-docentes/admin/agregar-recursos/agregar-usuarios/agregar-usuarios.component';
-import { VigilanteGuard } from './vigilante.guard';
+import { RecursosComponent } from './componentes/body/recursos/recursos.component';
+import { VigilanteDocentesGuard } from './Guardianes_/vigilante-docentes.guard';
+import { VigilanteAdminGuard } from './Guardianes_/vigilante-admin.guard';
+
 
 const routes: Routes = [
+  { path: '',component: InicioComponent},
   { path: 'mision', component: MisionComponent },
   { path: 'vision', component: VisionComponent },
   { path: 'objetivos', component: ObjetivosComponent },
@@ -30,17 +34,18 @@ const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
   { path: 'contactenos', component: ContactenosComponent },
   { path: 'docentes', component: DocentesComponent },
-  { path: 'agregar-recurso-docentes', component: AgregarRecursoComponentDocentes },
-  { path: 'seccion-recursos-docentes', component: SeccionRecursosComponentDocentes  },
-  { path: 'seccion-recursos-curso-admin', component: CursosComponent ,canActivate:[VigilanteGuard] },
-  { path: 'seccion-recursos-materias-admin', component: MateriasComponent ,canActivate:[VigilanteGuard] },
-  { path: 'seccion-recursos-noticias-admin', component: NoticiasComponent ,canActivate:[VigilanteGuard] },
-  { path: 'seccion-recursos-sugerencias-admin', component: SugerenciasComponent,canActivate:[VigilanteGuard]  },
-  { path: 'seccion-recursos-usuarios-admin', component: UsuariosComponent ,canActivate:[VigilanteGuard] },
-  { path: 'seccion-recursos-botones-admin', component: BotonesSeccionesComponent ,canActivate:[VigilanteGuard]  },
-  { path: 'recarga', component: ComponenteDeRecargaComponent ,canActivate:[VigilanteGuard] },
-  { path: 'agregar-noticias', component: AgregarNoticiasComponent ,canActivate:[VigilanteGuard] },
-  { path:  'agregar-usuario', component: AgregarUsuariosComponent ,canActivate:[VigilanteGuard] }
+  { path: 'agregar-recurso-docentes', component: AgregarRecursoComponentDocentes ,canActivate:[VigilanteDocentesGuard]},
+  { path: 'seccion-recursos-docentes', component: SeccionRecursosComponentDocentes ,canActivate:[VigilanteDocentesGuard] },
+  { path: 'seccion-recursos-curso-admin', component: CursosComponent ,canActivate:[VigilanteAdminGuard] },
+  { path: 'seccion-recursos-materias-admin', component: MateriasComponent ,canActivate:[VigilanteAdminGuard] },
+  { path: 'seccion-recursos-noticias-admin', component: NoticiasComponent ,canActivate:[VigilanteAdminGuard] },
+  { path: 'seccion-recursos-sugerencias-admin', component: SugerenciasComponent,canActivate:[VigilanteAdminGuard]  },
+  { path: 'seccion-recursos-usuarios-admin', component: UsuariosComponent ,canActivate:[VigilanteAdminGuard] },
+  { path: 'seccion-recursos-botones-admin', component: BotonesSeccionesComponent ,canActivate:[VigilanteAdminGuard]  },
+  { path: 'recarga', component: ComponenteDeRecargaComponent ,canActivate:[VigilanteAdminGuard] },
+  { path: 'agregar-noticias', component: AgregarNoticiasComponent ,canActivate:[VigilanteAdminGuard] },
+  { path:  'agregar-usuario', component: AgregarUsuariosComponent ,canActivate:[VigilanteAdminGuard] },
+  { path: 'recursos', component: RecursosComponent}
 
 ];
 

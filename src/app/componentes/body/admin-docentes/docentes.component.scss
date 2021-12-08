@@ -5,8 +5,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 150px;
+}
+  //mostly fluid
+//phone
+@media (min-width: 0px) {
+  #loginDocentes{
+  margin-top:150px;
+    
+  margin-bottom:58%;
   }
+}
+//desktop
+@media (min-width: 796px) {
+  #loginDocentes{
+    margin-top:150px;
+      
+    margin-bottom:30%;
+    }
+}
   #loginCenter{
     width: 500px;
   }

@@ -1,8 +1,6 @@
 #divMain{
     display: inline-block;
-    margin-top: 15%;
     text-align: center;
-    width: 100%;
 }
 .divmainhimno{
     display: inline-block;   
@@ -25,6 +23,12 @@
     #text p{
         text-align: justify;
     }
+    #divMain{
+        margin-top: 20%;
+        width: 100%;
+    
+        margin-bottom: 20%;
+    }
 }
 //desktop
 @media (min-width: 796px) {
@@ -42,5 +46,12 @@
     #diseñobandera{
         width:400px;
         margin-top: 0;
+        vertical-align: baseline;
+    }
+    #divMain{
+        margin-top: 15%;
+        width: 100%;
+    
+        margin-bottom: 18%;
     }
 }

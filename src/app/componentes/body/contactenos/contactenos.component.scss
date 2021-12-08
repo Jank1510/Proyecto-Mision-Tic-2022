@@ -1,6 +1,4 @@
-#divMain{
-    margin-top: 8%;
-}
+
 #form{
     text-align: center;
 } 
@@ -41,6 +39,10 @@
     margin-left: 10%;
     text-align: justify;
   }
+  #divMain{
+    margin-top: 17%;
+    margin-bottom: 31%;
+  }
 }
 //desktop
 @media (min-width: 796px) {
@@ -63,8 +65,12 @@
   }
   #form p {
     width: 48%;
-margin-left: 26%;
-text-align: justify;
-font-size: 15px;
+    margin-left: 26%;
+    text-align: justify;
+    font-size: 15px;
+  }
+  #divMain{
+    margin-top: 8%;
+    margin-bottom: 25%;
   }
 }

@@ -28,5 +28,10 @@ export class BotonesSeccionesComponent implements OnInit {
   Usuarios() {
     this.router.navigate(['seccion-recursos-usuarios-admin']);
   }
+  CerrarSesion(){
+    localStorage.removeItem("token")
+    localStorage.removeItem("idUsuario")
+    
+  }
 
 }

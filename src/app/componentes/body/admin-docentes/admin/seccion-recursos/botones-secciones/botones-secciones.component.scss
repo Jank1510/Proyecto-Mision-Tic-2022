@@ -1,13 +1,34 @@
 #botones{
-    margin-top: 9%;
-    justify-content: center;
+    justify-content: center; 
     display: flex;
 }
-#btn{
-    margin-right: 2%;
-    z-index: 1;
-    position: relative;
-    width: 18%;
+
+//mostly fluid
+//phone
+@media (min-width: 0px) {
+    #letras{
+        margin-left: -10px;
+        font-size: small;
+    }
+    #btn{
+        padding: 0 0 0 11px;
+        margin-right: 2%;
+        z-index: 1;
+        position: relative;
+    }
+    #botones{
+        margin-top: 20%;
+    }
 }
-#letras{
+//desktop
+@media (min-width: 796px) {
+    #btn{
+        margin-right: 2%;
+        z-index: 1;
+        position: relative;
+        width: 18%;
+    }
+    #botones{
+        margin-top: 9%;
+    }
 }

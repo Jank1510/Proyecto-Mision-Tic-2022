@@ -5,6 +5,7 @@
           width="60"></a>
       <ul id="desplePhone" *ngIf="mostrarDatos">
         <li id="itemPhone"><a (click)="MostrarOcultarDesple()" [routerLink]="['/inicio']">Inicio</a> </li>
+        <li id="itemPhone"><a (click)="MostrarOcultarDesple()" [routerLink]="['/recursos']">Recursos</a> </li>
         <li id="itemPhoneDesple"><a (click)="MostrarOcultarDesple()" id="esdesple">Quienes Somos ▽</a>
           <ul id="despleDelPhone">
             <li><a id="jehan" (click)="MostrarOcultarDesple()" [routerLink]="['/mision']">✔ Mision</a></li>
@@ -20,6 +21,7 @@
     </li>
     <ul id="menuDesktop">
       <li id="itemDesktop"><a [routerLink]="['/inicio']">Inicio</a> </li>
+      <li id="itemDesktop"><a [routerLink]="['/recursos']">Recursos</a> </li>
       <li id="itemDesktop"><a id="esdesple" (click)="MostrarOcultarDesple()" style="cursor: pointer;">Quienes Somos
           ▽</a>
         <ul id="desple" *ngIf="mostrarDatos">

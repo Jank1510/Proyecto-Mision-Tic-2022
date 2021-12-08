@@ -11,6 +11,9 @@ import { finalize } from 'rxjs/operators';
   templateUrl: './docentes.component.html',
   styleUrls: ['./docentes.component.scss']
 })
+@Injectable({//le ponemos injectable para llamar los desde agregar recursos
+  providedIn: 'root'
+})
 export class DocentesComponent implements OnInit {
 
    usuario: string;
@@ -18,6 +21,8 @@ export class DocentesComponent implements OnInit {
   user: any;
   list: any = [];
   ValidarUsuario: boolean;
+  public idUsuarios:any;
+  
 
   constructor(private uloginService: UloginService, private router: Router) {
     this.usuario = ""
@@ -59,6 +64,9 @@ export class DocentesComponent implements OnInit {
                 this.router.navigate(['seccion-recursos-curso-admin'])
               }
             }
+            if(jank==="id"){
+              localStorage.setItem("idUsuario", this.list[jank])//aca guardamos el id del usuario para usarlo en subir archivos y eso
+            }
             if (jank === "token") {
               localStorage.setItem("token", (this.list[jank]));//enviar token
 
@@ -72,6 +80,8 @@ export class DocentesComponent implements OnInit {
       }
     }
   }
+
+
   validaruser() {
     if (this.ValidarUsuario === false) {//aca se valida el boleano cuando es false es porq no existe el usuario
       Swal.fire({

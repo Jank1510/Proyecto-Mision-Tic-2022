@@ -11,21 +11,22 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let info of data">
-                <th scope="row">1</th>
+            <tr *ngFor="let info of data; let i= index">
+                <th scope="row">{{i+1}}</th>
                 <td>{{info.nombreRecurso}}</td>
                 <td>{{info.materia.nombre}}</td>
                 <td>{{info.curso.descripcion}}</td>
                 <td>{{info.ruta}}</td>
-                <td><button type="button" class="btn btn-outline-danger btn-sm">Danger</button></td>
+                <td><button (click)="BorrarRecurso(i)" id="btn"type="button" class="btn btn-outline-danger btn-sm">Borrar</button></td>
 
             </tr>            
         </tbody>
     </table>
 
     <div id="btn">
-            <button (click)="CrearRecurso()" style="margin-right: 16%;" type="button" class="btn btn-secondary">Agregar Recuso</button>
+            <button (click)="CrearRecurso()"  type="button" class="btn btn-secondary">Agregar Recuso</button>
             <br>
-            <button style="margin-left: 16%;" id="botones" type="button" class="btn btn-secondary">Cerrar Sesion</button>
+            <br>
+            <a  href="/docentes" (click)="CerrarSesion()" id="botones" type="button" class="btn btn-secondary">Cerrar Sesion</a>
     </div>
 </div>

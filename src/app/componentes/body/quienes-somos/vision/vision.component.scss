@@ -1,7 +1,5 @@
 #divMain{
     display: inline-block;
-    margin-top: 12%;
-    margin-left: 10%;
     text-align: center;
 }
 
@@ -19,6 +17,11 @@
     #text p{
         text-align: justify;
     }
+    #divMain{
+        margin-top: 22%;
+        margin-left: 10%;
+        margin-bottom: 40%;
+    }
 }
 //desktop
 @media (min-width: 796px) {
@@ -35,5 +38,10 @@
     }
     #text p{
         text-align: left;
+    }
+    #divMain{
+        margin-top: 12%;
+        margin-left: 10%;
+        margin-bottom: 25%;
     }
 }

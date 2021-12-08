@@ -3,20 +3,22 @@
         <div class="form-group row">
             <label for="colFormLabel" class="col-sm-2 col-form-label">Nombre Del Recurso</label>
             <div class="col-sm-10">
-                <input type="email" class="form-control" id="colFormLabel" placeholder="Nombre recurso">
+                <input [(ngModel)]="nombreRecurso" name="nombreRecurso" type="text" class="form-control" id="colFormLabel" placeholder="Nombre recurso">
             </div>
         </div>
         <br>
         <div class="dropdown show">
             <h6 style="float: left; margin-right: 3%;">Materias</h6>
-            <select name="select">
+            <select [(ngModel)]="materiasRecurso" name="select">
+                <option >Seleccionar</option>
                 <option *ngFor=" let mat of materias">{{mat.nombre}}</option>
             </select>
         </div>
         <br>
         <div class="dropdown show">
             <h6 style="float: left; margin-right: 3%;">Cursos</h6>
-            <select name="select">
+            <select [(ngModel)]="cursosRecurso" name="select">
+                <option >Seleccionar</option>
                 <option *ngFor=" let cur of cursos">{{cur.descripcion}}</option>
             </select>
         </div>
@@ -24,11 +26,15 @@
         <div class="form-group">
             <label for="exampleFormControlFile1">Cargar Archivo</label>            
             <br>
-            <input (change)="capturarFile($event)" style="z-index:2;position:relative;"type="file" class="form-control-file" id="exampleFormControlFile1">
+            <input (change)="selectFile($event)" style="z-index:2;position:relative;"type="file" class="form-control-file" id="exampleFormControlFile1">
         </div>
+        <br>
         <div>
             <button (click)="GuardarRecursos()" style="z-index: 2;position: relative;" type="button" class="btn btn-secondary">Agregar Recuso</button>
             <br>
+            <br>
+            <button (click)="Cancelar()" style="z-index: 2;position: relative;" type="button" class="btn btn-secondary">Cancelar</button>
+
         </div>
     </form>
 </div>

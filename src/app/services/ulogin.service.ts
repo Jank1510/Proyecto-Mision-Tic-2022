@@ -108,5 +108,17 @@ export class UloginService {
     let direccion = this.url+"/usuarios/agregar"
     return this.http.post(direccion,data,{headers: headers})
   }
+  DeleteRecursos(id:any){
+    const headers:HttpHeaders=new HttpHeaders({
+      'Content-Type': 'application/json;charset="utf-8',
+      'Authorization': 'Bearer '+localStorage.getItem("token")
+    })
+    let direccion = this.url+"/recursos/delete/"+id
+    return this.http.delete(direccion,{headers: headers})
+  }
+  GetNoticias(){
+    let direccion = this.url+"/noticias/getAll"
+    return this.http.get(direccion);    
+  }
 }
 

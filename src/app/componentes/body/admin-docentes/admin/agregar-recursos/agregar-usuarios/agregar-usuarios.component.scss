@@ -1,7 +1,23 @@
-#principal{
-    margin-top: 12%;
-   
-}
+
 .col-sm-10{
-    z-index: 2;
+    z-index: 1;
+}
+
+//mostly fluid
+//phone
+@media (min-width: 0px) {
+    #principal{
+        margin-top: 16%; 
+        margin-bottom: 48%;
+       
+    }
+}
+//desktop
+@media (min-width: 796px) {
+    #principal{
+        margin-top: 12%; 
+        margin-bottom: 23%;
+
+       
+    }
 }

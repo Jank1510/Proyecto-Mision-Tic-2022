@@ -1,7 +1,5 @@
 #divMain{
     display: inline-block;
-    margin-top: 12%;
-    margin-left: 10%;
     text-align: center;
 }
 /****************mostly fluid****************/
@@ -17,6 +15,11 @@
     }
     #text p{
         text-align: justify;
+    }
+    #divMain{
+        margin-top: 22%;
+        margin-left: 10%;    
+        margin-bottom: 88%;
     }
 }
 //desktop
@@ -34,5 +37,11 @@
     }
     #text p{
         text-align: left;
+    }
+    #divMain{
+        margin-top: 12%;
+        margin-left: 10%;
+    
+        margin-bottom: 28%;
     }
 }

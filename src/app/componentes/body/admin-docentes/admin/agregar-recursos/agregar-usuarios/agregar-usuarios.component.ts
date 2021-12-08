@@ -64,14 +64,22 @@ export class AgregarUsuariosComponent implements OnInit {
             }
             console.log(this.data)
             this.uloginService.PostUsuarios(this.data).subscribe((response:any) => {
+              Swal.fire({
+                icon: 'success',
+                title: 'Agregado Con Exito!'
+              })
               this.router.navigate(['seccion-recursos-usuarios-admin'])
-              console.log("LLEGO ACA")
+
             })
           }
         }
       }
     }
    
+  }
+  Cancelar(){
+    this.router.navigate(['seccion-recursos-usuarios-admin'])
+
   }
 
 }

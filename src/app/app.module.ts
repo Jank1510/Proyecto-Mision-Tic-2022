@@ -28,6 +28,7 @@ import { ComponenteDeRecargaComponent } from './componentes/body/admin-docentes/
 
 import { AgregarNoticiasComponent } from './componentes/body/admin-docentes/admin/agregar-recursos/agregar-noticias/agregar-noticias.component';
 import { AgregarUsuariosComponent } from './componentes/body/admin-docentes/admin/agregar-recursos/agregar-usuarios/agregar-usuarios.component';
+import { RecursosComponent } from './componentes/body/recursos/recursos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import { AgregarUsuariosComponent } from './componentes/body/admin-docentes/admi
     BotonesSeccionesComponent,
     ComponenteDeRecargaComponent,
     AgregarNoticiasComponent,
-    AgregarUsuariosComponent
+    AgregarUsuariosComponent,
+    RecursosComponent
   ],
   imports: [
     BrowserModule,

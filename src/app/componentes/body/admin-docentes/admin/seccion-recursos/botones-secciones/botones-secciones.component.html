@@ -1,7 +1,9 @@
 <div class="container" id="botones">
-    <button (click)="Cursos()" id="btn"type="button" class="btn btn-primary"><a id="letras">Cursos</a></button>
-    <button (click)="Materias()" id="btn"type="button" class="btn btn-secondary"><a id="letras">Materias</a></button>
-    <button (click)="Noticias()" id="btn"type="button" class="btn btn-success"><a id="letras">Noticias</a></button>
-    <button (click)="Sugerencias()" id="btn"type="button" class="btn btn-danger"><a id="letras">Sugerencias</a></button>
-    <button (click)="Usuarios()" id="btn"type="button" class="btn btn-info"><a id="letras">Usuarios</a></button>
+    <button (click)="Cursos()" id="btn"type="button" class="btn btn-primary"><p id="letras">Cursos</p></button>
+    <button (click)="Materias()" id="btn"type="button" class="btn btn-secondary"><p id="letras">Materias</p></button>
+    <button (click)="Noticias()" id="btn"type="button" class="btn btn-success"><p id="letras">Noticias</p></button>
+    <button style="display: inline-block;" (click)="Sugerencias()" id="btn"type="button" class="btn btn-secondary"><p id="letras">Sugerencias</p></button>
+    <button (click)="Usuarios()" id="btn"type="button" class="btn btn-info"><p id="letras">Usuarios</p></button>
+    
+    <a  href="/docentes"(click)="CerrarSesion()" id="btn" class="btn btn-danger"><p id="letras">Cerrar Sesion</p> </a>
 </div>

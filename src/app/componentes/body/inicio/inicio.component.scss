@@ -1,17 +1,41 @@
-#mainprincipal{
-    margin-top: 8%;
-    text-align: center;
+
+/* DISEÑO DE LAS NOTICIAS*/
+#contenedorIMG{
+    display: flex;
+    justify-content: center;
 }
+
+#btn1{
+    margin-left: 20%;
+}
+#btn2{
+    margin-right: 20%;
+}
+
+//*****************//
+
 //mostly fluid
 //phone
 @media (min-width: 0px) {
-    #imgindex img{
-        width: 70%;
+    .container{
+        padding-top: 45%;
+        margin-bottom: 90%;
+        justify-content: center;
+    }
+    #img{
+        width: 90% !important;
+        border-radius: 15px;
+        border: 10px solid #808080a1;
     }
 }
 //desktop
 @media (min-width: 796px) {
-    #imgindex img{
-        width: 570px;
+    .container{
+        padding-top: 8%;
+    }
+    #img{
+        width: 50% !important;
+        border-radius: 15px;
+        border: 10px solid #808080a1;
     }
 }

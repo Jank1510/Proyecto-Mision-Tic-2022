@@ -1,8 +1,23 @@
 .container{
     text-align: center;
-    margin-top:2%;
+
 }
 #btn{
     z-index: 1;
     position: relative;
+}
+
+//mostly fluid
+//phone
+@media (min-width: 0px) {
+    .container{
+        margin-bottom: 130%;
+    }
+}
+//desktop
+@media (min-width: 796px) {
+    .container{        
+    margin-top:2%;
+    margin-bottom: 28%;
+    }
 }

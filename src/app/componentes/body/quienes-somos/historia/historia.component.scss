@@ -1,8 +1,5 @@
 #divMain{
-    display: inline-block;
-    margin-top: 10%;
-    margin-left: 5%;
-    
+    display: inline-block;    
 }
 /****************mostly fluid****************/
 //phone
@@ -19,6 +16,10 @@
     }
     #divMain{
         text-align: center;
+        margin-top: 10%;
+        margin-left: 5%;
+    
+        margin-bottom: 20%;
     }
 }
 //desktop
@@ -40,5 +41,11 @@
     }
     #divMain{
         text-align: left;
+        margin-top: 10%;
+        margin-left: 5%;
+    
+        margin-bottom: 28%;
+        
+    
     }
 }
