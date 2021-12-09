@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UloginService } from 'src/app/services/ulogin.service';
 import Swal from 'sweetalert2';
-import { DocentesComponent } from '../../docentes.component';
 
 @Component({
   selector: 'app-agregar-recurso',
@@ -23,7 +22,7 @@ export class AgregarRecursoComponentDocentes implements OnInit {
   cursosRecursoFinal: any;
 
 
-  constructor(private docentes: DocentesComponent, private uloginService: UloginService, private router: Router) { }
+  constructor(private uloginService: UloginService, private router: Router) { }
 
   ngOnInit(): void {
   }

@@ -10,8 +10,11 @@ export class BotonesSeccionesComponent implements OnInit {
 
   constructor(  private router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {  
+    
   }
+ 
+
 
   Cursos() {
     this.router.navigate(['seccion-recursos-curso-admin']);
@@ -31,6 +34,7 @@ export class BotonesSeccionesComponent implements OnInit {
   CerrarSesion(){
     localStorage.removeItem("token")
     localStorage.removeItem("idUsuario")
+    localStorage.removeItem("rolUsuario")
     
   }
 

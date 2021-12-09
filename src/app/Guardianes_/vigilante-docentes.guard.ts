@@ -30,6 +30,10 @@ export class VigilanteDocentesGuard implements CanActivate {
         icon: 'warning',
         title: 'Logeate Primero !'
       })
+
+    localStorage.removeItem("token")
+    localStorage.removeItem("rolUsuario")
+    localStorage.removeItem("idUsuario")
     }
   }
   

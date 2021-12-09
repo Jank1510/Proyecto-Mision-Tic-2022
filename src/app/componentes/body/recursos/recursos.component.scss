@@ -1,7 +1,5 @@
 .container{
-    margin-top: 10%;
     text-align: center;
-    margin-bottom: 21%;
 }
 #select{
     z-index: 1;
@@ -16,3 +14,20 @@
     z-index: 1;
     position: relative;
 }
+ //mostly fluid
+//phone
+@media (min-width: 0px) {
+    .container{
+        margin-top: 20%;
+        text-align: center;
+        margin-bottom: 117%;
+    }
+  }
+  //desktop
+  @media (min-width: 796px) {
+    .container{
+        margin-top: 10%;
+        text-align: center;
+        margin-bottom: 30%;
+    }
+  }

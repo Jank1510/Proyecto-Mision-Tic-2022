@@ -1,8 +1,6 @@
 import { Component, Injectable, OnInit } from '@angular/core';
 import { UloginService } from 'src/app/services/ulogin.service';
-import { LoginI } from 'src/app/modelos/login.interface';
 import { Router } from '@angular/router';
-import { ResponseI } from 'src/app/modelos/response.interface';
 import Swal from 'sweetalert2';
 import { finalize } from 'rxjs/operators';
 
@@ -31,6 +29,12 @@ export class DocentesComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(localStorage.getItem("rolUsuario")==="15"){
+      this.router.navigate(['seccion-recursos-docentes']);
+    }
+    if(localStorage.getItem("rolUsuario")==="5"){
+      this.router.navigate(['seccion-recursos-curso-admin'])
+    }
   }
 
 
@@ -57,6 +61,7 @@ export class DocentesComponent implements OnInit {
 
           for (let jank in this.list) {
             if (jank === "rol") {
+              localStorage.setItem("rolUsuario", this.list[jank].id)
               if (this.list[jank].id === 15) {// el 15 hace referencia al rol de docentes 
                 this.router.navigate(['seccion-recursos-docentes']);
               }
@@ -69,7 +74,6 @@ export class DocentesComponent implements OnInit {
             }
             if (jank === "token") {
               localStorage.setItem("token", (this.list[jank]));//enviar token
-
             }
 
 

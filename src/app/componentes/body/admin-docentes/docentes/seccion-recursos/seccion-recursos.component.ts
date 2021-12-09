@@ -64,6 +64,7 @@ export class SeccionRecursosComponentDocentes implements OnInit {
   }
   CerrarSesion(){
     localStorage.removeItem("token")
+    localStorage.removeItem("rolUsuario")
     localStorage.removeItem("idUsuario")
   }
 
