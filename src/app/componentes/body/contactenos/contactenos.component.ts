@@ -67,9 +67,14 @@ export class ContactenosComponent implements OnInit {
               "correo": this.email,
               "mensaje": this.mensaje
             }
+            this.nombreapellido=""
+              this.email=""
+              this.mensaje=""
+              this.condiciones=false
 
             this.uloginService.PostContactenos(this.pqr).subscribe((response:any) =>{
               console.log(response)
+              
             })
           }
         }

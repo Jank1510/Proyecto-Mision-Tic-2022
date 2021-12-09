@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UloginService } from 'src/app/services/ulogin.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-recursos',
@@ -10,7 +11,7 @@ import { UloginService } from 'src/app/services/ulogin.service';
 export class RecursosComponent implements OnInit {
   cursos:any
   cursosSelect:any
-  CursosIndice:any
+  CursosIndice:any=[]
   recursos:any
 
   constructor(private uloginService: UloginService, private router: Router) { }
@@ -26,13 +27,24 @@ export class RecursosComponent implements OnInit {
   a=this.CargarCursos()
 
   Consultar(){
+    this.CursosIndice=[]
     
-    this.CursosIndice=this.cursos[this.cursosSelect]
     this.uloginService.GetRecursos().subscribe((res:any)=>{
       this.recursos=res
-    console.log(this.recursos)
-
+    for (const i of this.recursos) {
+      if (i.curso.id===this.cursos[this.cursosSelect].id){
+        this.CursosIndice.push(i)
+      }
+    }
+    if(this.CursosIndice.length===0){
+      Swal.fire({
+        icon: 'info',
+        title: 'No hay actividades en este curso¡ !'
+      })
+    }
     })
+    
+    
   }
 
 }

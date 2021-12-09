@@ -1,11 +1,13 @@
 <div class="container">
+    <h3>Selecciona tu curso ⬇</h3>
     <select [(ngModel)]="cursosSelect" id="select" class="form-select" aria-label="Default select example">
-        <option selected>Seleccionar</option>
+
         <option *ngFor="let cur of cursos;let i =index;" value={{i}}>{{cur.descripcion}}</option>
     </select>
-    <br><br>
-    <button (click)="Consultar()" id="btn"type="button" class="btn btn-secondary"><p id="letras">Materias</p></button>
-
+    <br>
+    <button (click)="Consultar()" id="btn"type="button" class="btn btn-secondary"><p id="letras">Consultar</p></button>
+    <br>
+    <br>
     <table class="table table-dark table-hover table-bordered row-border">
         <thead>
             <tr>
@@ -16,12 +18,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr >
+            <tr *ngFor="let i of CursosIndice">
                 <th scope="row"></th>
-                <td>{{recursos.nombreRecurso}}</td>
-                <td></td>
-                <td></td>
-                
+                <td class="table-light">{{i.nombreRecurso}}</td>
+                <td class="table-light">{{i.materia.nombre}}</td>
+                <td id="link" class="table-light"><a href="{{i.ruta}}">{{i.ruta}}</a></td>               
 
             </tr>
         </tbody>

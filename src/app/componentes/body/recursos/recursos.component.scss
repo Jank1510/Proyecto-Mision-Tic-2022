@@ -1,6 +1,6 @@
 .container{
     margin-top: 10%;
-    justify-content: center;
+    text-align: center;
     margin-bottom: 21%;
 }
 #select{
@@ -8,6 +8,11 @@
     position: relative;
 }
 #btn{
+    z-index: 1;
+    position: relative;
+    border-radius: 20px;
+}
+#link{
     z-index: 1;
     position: relative;
 }

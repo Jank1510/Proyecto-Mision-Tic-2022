@@ -120,5 +120,20 @@ export class UloginService {
     let direccion = this.url+"/noticias/getAll"
     return this.http.get(direccion);    
   }
+  PostNoticias(formulario:any){    
+    const headers:HttpHeaders=new HttpHeaders({
+      'Authorization': 'Bearer '+localStorage.getItem("token")
+    })
+    let direccion = this.url+"/noticias/subir_noticia"
+    return this.http.post(direccion,formulario,{headers: headers})
+  }
+  DeleteNoticias(id:any){
+    const headers:HttpHeaders=new HttpHeaders({
+      'Content-Type': 'application/json;charset="utf-8',
+      'Authorization': 'Bearer '+localStorage.getItem("token")
+    })
+    let direccion = this.url+"/noticias/delete/"+id
+    return this.http.delete(direccion,{headers: headers})
+  }
 }
 

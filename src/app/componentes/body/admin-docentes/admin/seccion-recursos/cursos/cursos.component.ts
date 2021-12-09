@@ -49,7 +49,7 @@ export class CursosComponent implements OnInit {
         )
 
         this.uloginService.DeleteCursos(id).pipe(finalize(() => this.DevolverACursos())).subscribe((response: any) => {
-          console.log(response)
+        
         })
       } else {
 

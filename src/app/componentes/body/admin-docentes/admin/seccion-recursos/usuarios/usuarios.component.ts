@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs';
 import { UloginService } from 'src/app/services/ulogin.service';
 import Swal from 'sweetalert2';
 
@@ -45,9 +46,10 @@ export class UsuariosComponent implements OnInit {
             'success'
           )
 
-          this.uloginService.DeleteUsuarios(id).subscribe((response: any) => {
+          this.uloginService.DeleteUsuarios(id).pipe(finalize(() => this.DevolverAUsuarios())).subscribe((response: any) => {
             console.log(response)
           })
+        }else{
           this.router.navigate(['seccion-recursos-usuarios-admin'])
         }
       }else{
@@ -55,14 +57,14 @@ export class UsuariosComponent implements OnInit {
           icon: 'error',
           title: 'Es Imposible Borrar A Este Administrador!'
         })
-      }
-
-      this.router.navigate(['seccion-recursos-usuarios-admin'])
+      }      
     })
-
   }
   CrearUsuario(){
     this.router.navigate(['agregar-usuario'])
+  }
+  DevolverAUsuarios(){
+    this.router.navigate(['seccion-recursos-usuarios-admin'])
   }
 
 }

@@ -14,14 +14,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let not of noticias">
-                <td></td>
-                <td></td>
-                <td><button id="btn"type="button" class="btn btn-outline-danger btn-sm">Danger</button></td>
+            <tr *ngFor="let not of noticias;let i=index">
+                <td>{{not.id}}</td>
+                <td>{{not.tituloNoticia}}</td>
+                <td>{{not.nombreImagen}}</td>
+                <td>{{not.fecha}}</td>
+                <td><a id="link" href="{{not.ruta}}">{{not.ruta}}</a></td>
+                <td>{{not.descripcion}}</td>
+                <td><button (click)="BorrarNoticias(i)" id="btn"type="button" class="btn btn-outline-danger btn-sm">Eliminar</button></td>
     
             </tr>             
         </tbody>
     </table>
     
-<button id="btn"type="button" class="btn btn-warning">Crear Nueva Noticia</button>
+<button (click)="CrearNoticia()" id="btn"type="button" class="btn btn-warning">Crear Nueva Noticia</button>
 </div>

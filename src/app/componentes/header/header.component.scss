@@ -40,14 +40,12 @@ margin-top: -50px;
     font-size: 17px;
     margin-top: 15px;
 }
-#desple li{
-    margin-left: -2rem;
-}
+
 #menu #desple {
     background-color: rgb(46, 78, 219);
     height: auto;
     width: auto;
-    position: absolute;
+    position: relative;
     list-style: none;
     border-radius: 10px;
     z-index: 2;

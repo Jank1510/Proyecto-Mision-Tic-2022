@@ -1,15 +1,10 @@
 
 /* DISEÑO DE LAS NOTICIAS*/
-#contenedorIMG{
-    display: flex;
-    justify-content: center;
-}
-
 #btn1{
-    margin-left: 20%;
+    margin-left: 18%;
 }
 #btn2{
-    margin-right: 20%;
+    margin-right: 18%;
 }
 
 //*****************//
@@ -27,15 +22,21 @@
         border-radius: 15px;
         border: 10px solid #808080a1;
     }
+    #contenedorIMG{
+        padding-left: 7%;
+    }
 }
 //desktop
 @media (min-width: 796px) {
     .container{
-        padding-top: 8%;
+        padding-top: 5%;
     }
     #img{
-        width: 50% !important;
+        width: 70% !important;
         border-radius: 15px;
         border: 10px solid #808080a1;
+    }
+    #contenedorIMG{
+        padding-left: 23%;
     }
 }
