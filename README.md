@@ -6,3 +6,11 @@
 * Alvaro Alejandro Zarabanda Gutierrez 
 * Angela Maria Lopez Coronel
 * Juan Sebastián Perea Rincón 
+
+# Links de despliegues:
+## Backend:
+https://chiquitines-backend.herokuapp.com/
+
+## Frontend:
+https://chiquitines-frontend.herokuapp.com/
+
