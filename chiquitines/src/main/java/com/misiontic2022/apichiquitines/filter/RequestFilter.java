@@ -120,7 +120,7 @@ public class RequestFilter implements Filter {
 
 		// validacion de usuarios
 		if (url.contains("/usuarios")) {
-			if (url.equals("/usuarios/login")) {
+			if (url.equals("/usuarios/login") || url.contains("/usuarios/tokenIsValid")) {
 				chain.doFilter(request, response);
 			} else if (url.contains("/getAll") || url.contains("/agregar") || url.contains("/borrar")) {
 				if (idRol == 5) {
@@ -240,7 +240,7 @@ public class RequestFilter implements Filter {
 				chain.doFilter(request, response);
 			} else if (url.contains("/recursos/subir_recurso")) {
 				if (idRol == 15) {
-					if (resourceUserId == currentUserId) {
+					if (resourceUserId.equals(currentUserId)) {
 						validarToken(request, response, chain, token);
 					} else {
 						String salida = "{\"ERROR\": \"NO PUEDE AGREGAR RECURSOS CON EL ID DE OTRO USUARIO\"}";
